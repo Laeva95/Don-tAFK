@@ -7,6 +7,8 @@ public class StageStart : MonoBehaviour
 {
     public void StartStageBtn()
     {
+        PlayerStatus.Instance.PlayerStatusUpdate();
+
         SceneManager.LoadScene(2);
     }
 }

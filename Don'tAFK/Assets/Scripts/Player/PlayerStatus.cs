@@ -42,7 +42,7 @@ public class PlayerStatus : MonoBehaviour
     }
     public void PlayerStatusUpdate()
     {
-        PlayerUpgrade up = new PlayerUpgrade();
+        PlayerUpgrade up =  FindObjectOfType<PlayerUpgrade>();
 
         PlayerAttackPower = 5 + up.PlayerAttackPowerLevel;
         PlayerAttackSpeed = 0.5f - (up.PlayerAttackSpeedLevel * 0.1f);

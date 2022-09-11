@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ObjectPoolingManager : MonoBehaviour
 {
+    [SerializeField] GameObject m_PlayerAttackEffect00;
 
 
-    // Queue들을 관리하기 위한 Dictionary
+    public const int m_PlayerAttackEffect00Key = 1000;
+
+
+    private Queue<GameObject> m_PlayerAttackEffect00Queue = new Queue<GameObject>();
+
+
     public Dictionary<int, Queue<GameObject>> m_queueDic = new Dictionary<int, Queue<GameObject>>();
 
-    // 오브젝트 풀링 매니저 변수, 프로퍼티
-    // 단일 객체만 유지하고, 다른 클래스에서 쉽게 사용할 수 있도록 싱글톤 패턴을 사용
     private static ObjectPoolingManager instance;
     public static ObjectPoolingManager Instance
     {
@@ -31,6 +35,11 @@ public class ObjectPoolingManager : MonoBehaviour
             // instance가 비어있을 경우 해당 객체를 넣어줌
             instance = this;
         }
+
+        m_queueDic.Add(m_PlayerAttackEffect00Key, m_PlayerAttackEffect00Queue);
+
+
+        InitQueue(m_PlayerAttackEffect00, m_PlayerAttackEffect00Queue, 10);
     }
 
     // 오브젝트 풀 Queue에 오브젝트를 생성해서 채워주는 초기화 함수
