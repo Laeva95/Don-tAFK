@@ -12,7 +12,7 @@ public abstract class Monster : MonoBehaviour
     protected int m_MonsterHP;                    // 몬스터 체력
     protected int m_MonsterDamage;                // 몬스터 공격력
     protected float m_MoveSpeed;                  // 몬스터 이동 속도
-    protected float m_AttackDelay;                // 몬스터 공격 간격
+    protected WaitForSeconds m_AttackDelay;                // 몬스터 공격 간격
     protected bool m_IsAttack;                    // 몬스터 공격 중복 방지 변수
 
     public Rigidbody2D Rigid => m_Rigid;
@@ -54,7 +54,7 @@ public abstract class Monster : MonoBehaviour
     {
         m_IsAttack = true;
 
-        yield return new WaitForSeconds(m_AttackDelay);
+        yield return m_AttackDelay;
 
         m_IsAttack = false;
     }

@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
 
     private bool m_IsAttack;
 
+    [SerializeField] LayerMask m_MonsterLayer;
+    
+
     private void Awake()
     {
         PlayerInit();
@@ -48,6 +51,19 @@ public class Player : MonoBehaviour
 
         obj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
                 Input.mousePosition.y, -Camera.main.transform.position.z));
+
+        Collider2D[] cols = Physics2D.OverlapCircleAll(obj.transform.position, PlayerAttackArea, m_MonsterLayer);
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            // 몬스터에게 데미지 부여
+            Monster monster = cols[i].gameObject.GetComponent<Monster>();
+            monster.MonsterOnDamage(PlayerAttackPower);
+
+            // 몬스터를 플레이어의 반대 방향으로 밀쳐냄
+            Vector3 dir = (cols[i].gameObject.transform.position - transform.position).normalized;
+            monster.Rigid.AddForce(dir * 1, ForceMode2D.Impulse);
+        }
 
         yield return new WaitForSeconds(PlayerAttackSpeed);
 
