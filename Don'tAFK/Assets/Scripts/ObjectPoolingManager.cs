@@ -6,11 +6,17 @@ public class ObjectPoolingManager : MonoBehaviour
 {
     [SerializeField] GameObject m_PlayerAttackEffect00;
 
+    [SerializeField] GameObject m_Monster00;
 
-    public const int m_PlayerAttackEffect00Key = 1000;
+
+    public const int m_PlayerAttackEffect00Key = 100;
+
+    public const int m_Monster00Key = 0;
 
 
     private Queue<GameObject> m_PlayerAttackEffect00Queue = new Queue<GameObject>();
+
+    private Queue<GameObject> m_Monster00Queue = new Queue<GameObject>();
 
 
     public Dictionary<int, Queue<GameObject>> m_queueDic = new Dictionary<int, Queue<GameObject>>();
@@ -38,8 +44,12 @@ public class ObjectPoolingManager : MonoBehaviour
 
         m_queueDic.Add(m_PlayerAttackEffect00Key, m_PlayerAttackEffect00Queue);
 
+        m_queueDic.Add(m_Monster00Key, m_Monster00Queue);
+
 
         InitQueue(m_PlayerAttackEffect00, m_PlayerAttackEffect00Queue, 10);
+
+        InitQueue(m_Monster00, m_Monster00Queue, 100);
     }
 
     // 오브젝트 풀 Queue에 오브젝트를 생성해서 채워주는 초기화 함수

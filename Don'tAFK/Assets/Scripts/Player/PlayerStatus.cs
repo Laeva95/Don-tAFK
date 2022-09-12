@@ -8,7 +8,7 @@ public class PlayerStatus : MonoBehaviour
     public int PlayerAttackPower { get; private set; }
     public float PlayerAttackSpeed { get; private set; }
     public float PlayerAttackArea { get; private set; }
-    public int PlayerHP { get; private set; }
+    public int PlayerMaxHP { get; private set; }
     public int PlayerHPRegen { get; private set; }
     public int PlayerArmor { get; private set; }
 
@@ -46,8 +46,8 @@ public class PlayerStatus : MonoBehaviour
 
         PlayerAttackPower = 5 + up.PlayerAttackPowerLevel;
         PlayerAttackSpeed = 0.5f - (up.PlayerAttackSpeedLevel * 0.1f);
-        PlayerAttackArea = 1f + (up.PlayerAttackAreaLevel * 0.05f);
-        PlayerHP = 100 + (up.PlayerHPLevel * 5);
+        PlayerAttackArea = 0.25f + (up.PlayerAttackAreaLevel * 0.025f);
+        PlayerMaxHP = 100 + (up.PlayerMaxHPLevel * 5);
         PlayerHPRegen = 0 + (up.PlayerHPRegenLevel * 1);
         PlayerArmor = 0 + (up.PlayerArmorLevel * 1);
     }

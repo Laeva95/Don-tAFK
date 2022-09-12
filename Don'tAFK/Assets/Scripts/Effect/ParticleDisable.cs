@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ParticleDisable : MonoBehaviour
 {
-    // Start is called before the first frame update
     void OnEnable()
     {
         ParticleSystem particle = gameObject.GetComponent<ParticleSystem>();

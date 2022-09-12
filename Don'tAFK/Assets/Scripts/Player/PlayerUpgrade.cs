@@ -25,12 +25,12 @@ public class PlayerUpgrade : MonoBehaviour
         set
         { PlayerPrefs.SetInt("PlayerAttackAreaLevel", PlayerAttackAreaLevel); }
     }
-    public int PlayerHPLevel
+    public int PlayerMaxHPLevel
     {
         get
         { return PlayerPrefs.GetInt("PlayerHPLevel", 0); }
         set
-        { PlayerPrefs.SetInt("PlayerHPLevel", PlayerHPLevel); }
+        { PlayerPrefs.SetInt("PlayerHPLevel", PlayerMaxHPLevel); }
     }
     public int PlayerHPRegenLevel
     {
@@ -71,7 +71,7 @@ public class PlayerUpgrade : MonoBehaviour
     {
         if (true)
         {
-            PlayerHPLevel++;
+            PlayerMaxHPLevel++;
         }
     }
     public void HPRegenBtn()

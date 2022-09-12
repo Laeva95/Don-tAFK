@@ -53,4 +53,16 @@ public class PlayerResource : MonoBehaviour
             Destroy(this);
         }
     }
+    public void SetGold(int _gold)
+    {
+        PlayerGold += _gold;
+    }
+    public void SetRebirthPoint(int _rebirthPoint)
+    {
+        PlayerRebirthPoint += _rebirthPoint;
+    }
+    public void SetClearStage(int _ClearStage)
+    {
+        PlayerClearStage = _ClearStage;
+    }
 }

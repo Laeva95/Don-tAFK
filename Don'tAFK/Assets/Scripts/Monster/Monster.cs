@@ -14,7 +14,10 @@ public abstract class Monster : MonoBehaviour
     protected float m_MoveSpeed;                  // 몬스터 이동 속도
     protected WaitForSeconds m_AttackDelay;                // 몬스터 공격 간격
     protected bool m_IsAttack;                    // 몬스터 공격 중복 방지 변수
+    protected int m_MonsterGold;
+    protected int m_MonsterKey;
 
+    protected WaitForSeconds m_MoveDelay;                // 몬스터 공격 간격
     public Rigidbody2D Rigid => m_Rigid;
 
     private void Awake()
@@ -24,6 +27,7 @@ public abstract class Monster : MonoBehaviour
         m_Rigid = GetComponent<Rigidbody2D>();
         m_Ani = GetComponent<Animator>();
         m_SpRen = GetComponent<SpriteRenderer>();
+        m_MoveDelay = new WaitForSeconds(0.05f);
     }
 
     // 모든 몬스터 클래스에서 사용하는 내용이므로 부모 클래스에서 작성
@@ -33,6 +37,7 @@ public abstract class Monster : MonoBehaviour
         m_MonsterHP = m_MonsterMaxHP;
         m_IsAttack = false;
         m_SpRen.color = Color.white;
+        MonsterSpawnManager.m_MonsterCount++;
 
         StartCoroutine(MonsterMove());
     }
@@ -41,18 +46,29 @@ public abstract class Monster : MonoBehaviour
     // 일부 클래스에서는 따로 작성할 필요가 있으므로 가상 함수로 작성
     protected virtual IEnumerator MonsterMove()
     {
+        yield return new WaitForSeconds(1f);
+
         while (gameObject.activeSelf)
         {
+            if(!m_IsAttack)
+            { 
             Vector3 dir = (m_PlayerTransform.position - transform.position).normalized;
 
             transform.position += dir * m_MoveSpeed * 0.05f;
+            }
 
-            yield return new WaitForSeconds(0.05f);
+            yield return m_MoveDelay;
         }
     }
     protected virtual IEnumerator MonsterAttack(GameObject _obj)
     {
         m_IsAttack = true;
+
+        Player player = _obj.GetComponent<Player>();
+
+        player.PlayerOnDamage(m_MonsterDamage);
+
+        Debug.Log(player.PlayerHP);
 
         yield return m_AttackDelay;
 
@@ -62,7 +78,15 @@ public abstract class Monster : MonoBehaviour
     {
         m_MonsterHP -= _damage;
 
+        Debug.Log(m_MonsterHP);
+
         StartCoroutine(MonsterOnDamageEffect());
+
+        if (m_MonsterHP <= 0)
+        {
+            ObjectPoolingManager.Instance.InsertQueue(gameObject, m_MonsterKey);
+            PlayerResource.Instance.SetGold(m_MonsterGold);
+        }
     }
 
     // 몬스터 피격 이펙트 코루틴
@@ -90,6 +114,7 @@ public abstract class Monster : MonoBehaviour
     // 비활성화시 모든 코루틴 종료
     private void OnDisable()
     {
+        MonsterSpawnManager.m_MonsterCount--;
         StopAllCoroutines();
     }
 }

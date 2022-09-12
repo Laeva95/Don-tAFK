@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float PlayerAttackSpeed { get; private set; }
     public float PlayerAttackArea { get; private set; }
     public int PlayerHP { get; private set; }
+    public int PlayerMaxHP { get; private set; }
     public int PlayerHPRegen { get; private set; }
     public int PlayerArmor { get; private set; }
 
@@ -27,9 +28,11 @@ public class Player : MonoBehaviour
         PlayerAttackPower = PlayerStatus.Instance.PlayerAttackPower;
         PlayerAttackSpeed = PlayerStatus.Instance.PlayerAttackSpeed;
         PlayerAttackArea = PlayerStatus.Instance.PlayerAttackArea;
-        PlayerHP = PlayerStatus.Instance.PlayerHP;
+        PlayerMaxHP = PlayerStatus.Instance.PlayerMaxHP;
         PlayerHPRegen = PlayerStatus.Instance.PlayerHPRegen;
         PlayerArmor = PlayerStatus.Instance.PlayerArmor;
+
+        PlayerHP = PlayerMaxHP;
     }
 
     private void Update()
@@ -68,5 +71,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(PlayerAttackSpeed);
 
         m_IsAttack = false;
+    }
+
+    public void PlayerOnDamage(int _damage)
+    {
+        PlayerHP -= _damage;
     }
 }
