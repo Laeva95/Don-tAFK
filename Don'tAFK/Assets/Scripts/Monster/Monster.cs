@@ -12,13 +12,13 @@ public abstract class Monster : MonoBehaviour
     protected int m_MonsterHP;                    // 몬스터 체력
     protected int m_MonsterDamage;                // 몬스터 공격력
     protected float m_MoveSpeed;                  // 몬스터 이동 속도
-    protected WaitForSeconds m_AttackDelay00;                // 몬스터 공격 간격
-    protected WaitForSeconds m_AttackDelay01;                // 몬스터 공격 간격
+    protected WaitForSeconds m_AttackDelay00;                // 몬스터 공격 전 간격
+    protected WaitForSeconds m_AttackDelay01;                // 몬스터 공격 후 간격
     protected bool m_IsAttack;                    // 몬스터 공격 중복 방지 변수
     protected int m_MonsterGold;
     protected int m_MonsterKey;
 
-    protected WaitForSeconds m_MoveDelay;                // 몬스터 공격 간격
+    protected WaitForSeconds m_MoveDelay;                // 몬스터 이동 간격
     public Rigidbody2D Rigid => m_Rigid;
 
     private void Awake()
@@ -77,7 +77,10 @@ public abstract class Monster : MonoBehaviour
 
         Player player = _obj.GetComponent<Player>();
 
-        player.PlayerOnDamage(m_MonsterDamage);
+        if (m_MonsterHP > 0)
+        {
+            player.PlayerOnDamage(m_MonsterDamage);
+        }
 
         yield return m_AttackDelay01;
 
@@ -87,15 +90,23 @@ public abstract class Monster : MonoBehaviour
     {
         m_MonsterHP -= _damage;
 
-        Debug.Log(m_MonsterHP);
-
         StartCoroutine(MonsterOnDamageEffect());
 
         if (m_MonsterHP <= 0)
         {
-            ObjectPoolingManager.Instance.InsertQueue(gameObject, m_MonsterKey);
-            PlayerResource.Instance.SetGold(m_MonsterGold);
+            StartCoroutine(MonsterDead());
         }
+    }
+    protected IEnumerator MonsterDead()
+    {
+        m_Ani.SetTrigger("Dead");
+
+        yield return new WaitForSeconds(0.5f);
+
+        ObjectPoolingManager.Instance.InsertQueue(gameObject, m_MonsterKey);
+        PlayerResource.Instance.PlayerGold += m_MonsterGold;
+
+        Debug.Log(PlayerResource.Instance.PlayerGold);
     }
 
     // 몬스터 피격 이펙트 코루틴

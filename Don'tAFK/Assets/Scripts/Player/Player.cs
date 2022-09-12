@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
 
             // 몬스터를 플레이어의 반대 방향으로 밀쳐냄
             Vector3 dir = (cols[i].gameObject.transform.position - transform.position).normalized;
-            monster.Rigid.AddForce(dir * 1, ForceMode2D.Impulse);
+            monster.Rigid.AddForce(dir * 0.5f, ForceMode2D.Impulse);
         }
 
         yield return new WaitForSeconds(PlayerAttackSpeed);

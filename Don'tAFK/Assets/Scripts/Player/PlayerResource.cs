@@ -9,21 +9,21 @@ public class PlayerResource : MonoBehaviour
         get
         { return PlayerPrefs.GetInt("PlayerGold", 0); }
         set
-        { PlayerPrefs.SetInt("PlayerGold", PlayerGold); }
+        { PlayerPrefs.SetInt("PlayerGold", value); }
     }
     public int PlayerRebirthPoint
     {
         get
         { return PlayerPrefs.GetInt("PlayerRebirthPoint", 0); }
         set
-        { PlayerPrefs.SetInt("PlayerRebirthPoint", PlayerRebirthPoint); }
+        { PlayerPrefs.SetInt("PlayerRebirthPoint", value); }
     }
     public int PlayerClearStage
     {
         get
         { return PlayerPrefs.GetInt("PlayerClearStage", 0); }
         set
-        { PlayerPrefs.SetInt("PlayerClearStage", PlayerClearStage); }
+        { PlayerPrefs.SetInt("PlayerClearStage", value); }
     }
 
     private static PlayerResource instance;
@@ -52,17 +52,5 @@ public class PlayerResource : MonoBehaviour
         {
             Destroy(this);
         }
-    }
-    public void SetGold(int _gold)
-    {
-        PlayerGold += _gold;
-    }
-    public void SetRebirthPoint(int _rebirthPoint)
-    {
-        PlayerRebirthPoint += _rebirthPoint;
-    }
-    public void SetClearStage(int _ClearStage)
-    {
-        PlayerClearStage = _ClearStage;
     }
 }

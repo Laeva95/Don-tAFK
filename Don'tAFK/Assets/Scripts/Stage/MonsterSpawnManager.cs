@@ -22,7 +22,10 @@ public class MonsterSpawnManager : MonoBehaviour
     {
         while (true)
         {
-            PlayerResource.Instance.SetClearStage(Stage);
+            if (PlayerResource.Instance.PlayerClearStage < Stage)
+            {
+                PlayerResource.Instance.PlayerClearStage = Stage;
+            }
             Stage++;
 
             yield return new WaitForSeconds(1f);
@@ -51,7 +54,7 @@ public class MonsterSpawnManager : MonoBehaviour
             float y = Random.Range(-1f, 1f);
             Vector3 dir = new Vector3(x, y, 0).normalized;
 
-            float distance = Random.Range(3f, 3.5f);
+            float distance = Random.Range(2.5f, 3f);
 
             // 플레이어 위치에서 일정 거리 떨어진 위치에 몬스터 생성
             GameObject obj = ObjectPoolingManager.Instance.GetQueue(_monsterNum);

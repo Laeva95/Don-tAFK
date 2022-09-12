@@ -44,10 +44,10 @@ public class PlayerStatus : MonoBehaviour
     {
         PlayerUpgrade up =  FindObjectOfType<PlayerUpgrade>();
 
-        PlayerAttackPower = 5 + up.PlayerAttackPowerLevel;
+        PlayerAttackPower = 5 + (up.PlayerAttackPowerLevel * 2);
         PlayerAttackSpeed = 0.5f - (up.PlayerAttackSpeedLevel * 0.1f);
         PlayerAttackArea = 0.25f + (up.PlayerAttackAreaLevel * 0.025f);
-        PlayerMaxHP = 100 + (up.PlayerMaxHPLevel * 5);
+        PlayerMaxHP = 10 + (up.PlayerMaxHPLevel * 2);
         PlayerHPRegen = 0 + (up.PlayerHPRegenLevel * 1);
         PlayerArmor = 0 + (up.PlayerArmorLevel * 1);
     }
