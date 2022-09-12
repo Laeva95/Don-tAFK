@@ -30,7 +30,7 @@ public class RangeMonster : Monster
     {
         m_IsAttack = true;
 
-        yield return m_AttackDelay;
+        yield return m_AttackDelay00;
 
         m_IsAttack = false;
     }

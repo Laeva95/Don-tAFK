@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class Player : MonoBehaviour
     public int PlayerArmor { get; private set; }
 
     private bool m_IsAttack;
+    SpriteRenderer m_SpRen;
 
     [SerializeField] LayerMask m_MonsterLayer;
+    [SerializeField] Text m_PlayerHPText;
     
 
     private void Awake()
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
         PlayerInit();
 
         m_IsAttack = false;
+        m_SpRen = GetComponent<SpriteRenderer>();
     }
     public void PlayerInit()
     {
@@ -33,6 +37,7 @@ public class Player : MonoBehaviour
         PlayerArmor = PlayerStatus.Instance.PlayerArmor;
 
         PlayerHP = PlayerMaxHP;
+        m_PlayerHPText.text = PlayerHP.ToString();
     }
 
     private void Update()
@@ -76,5 +81,16 @@ public class Player : MonoBehaviour
     public void PlayerOnDamage(int _damage)
     {
         PlayerHP -= _damage;
+        m_PlayerHPText.text = PlayerHP.ToString();
+
+        StartCoroutine(PlayerOnDamageEffect());
+    }
+    IEnumerator PlayerOnDamageEffect()
+    {
+        m_SpRen.color = Color.red;
+
+        yield return new WaitForSeconds(0.1f);
+
+        m_SpRen.color = Color.white;
     }
 }

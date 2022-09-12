@@ -12,7 +12,8 @@ public abstract class Monster : MonoBehaviour
     protected int m_MonsterHP;                    // 몬스터 체력
     protected int m_MonsterDamage;                // 몬스터 공격력
     protected float m_MoveSpeed;                  // 몬스터 이동 속도
-    protected WaitForSeconds m_AttackDelay;                // 몬스터 공격 간격
+    protected WaitForSeconds m_AttackDelay00;                // 몬스터 공격 간격
+    protected WaitForSeconds m_AttackDelay01;                // 몬스터 공격 간격
     protected bool m_IsAttack;                    // 몬스터 공격 중복 방지 변수
     protected int m_MonsterGold;
     protected int m_MonsterKey;
@@ -27,7 +28,7 @@ public abstract class Monster : MonoBehaviour
         m_Rigid = GetComponent<Rigidbody2D>();
         m_Ani = GetComponent<Animator>();
         m_SpRen = GetComponent<SpriteRenderer>();
-        m_MoveDelay = new WaitForSeconds(0.05f);
+        m_MoveDelay = new WaitForSeconds(0.025f);
     }
 
     // 모든 몬스터 클래스에서 사용하는 내용이므로 부모 클래스에서 작성
@@ -52,9 +53,15 @@ public abstract class Monster : MonoBehaviour
         {
             if(!m_IsAttack)
             { 
-            Vector3 dir = (m_PlayerTransform.position - transform.position).normalized;
+                Vector3 dir = (m_PlayerTransform.position - transform.position).normalized;
 
-            transform.position += dir * m_MoveSpeed * 0.05f;
+                transform.position += dir * m_MoveSpeed * 0.025f;
+
+                m_Ani.SetBool("IsMove", true);
+            }
+            else
+            {
+                m_Ani.SetBool("IsMove", false);
             }
 
             yield return m_MoveDelay;
@@ -64,13 +71,15 @@ public abstract class Monster : MonoBehaviour
     {
         m_IsAttack = true;
 
+        m_Ani.SetTrigger("Attack");
+
+        yield return m_AttackDelay00;
+
         Player player = _obj.GetComponent<Player>();
 
         player.PlayerOnDamage(m_MonsterDamage);
 
-        Debug.Log(player.PlayerHP);
-
-        yield return m_AttackDelay;
+        yield return m_AttackDelay01;
 
         m_IsAttack = false;
     }
