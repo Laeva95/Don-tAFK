@@ -105,8 +105,6 @@ public abstract class Monster : MonoBehaviour
 
         ObjectPoolingManager.Instance.InsertQueue(gameObject, m_MonsterKey);
         PlayerResource.Instance.PlayerGold += (int)(m_MonsterGold * PlayerStatus.Instance.PlayerGoldLevel);
-
-        Debug.Log(PlayerResource.Instance.PlayerGold);
     }
 
     // 몬스터 피격 이펙트 코루틴

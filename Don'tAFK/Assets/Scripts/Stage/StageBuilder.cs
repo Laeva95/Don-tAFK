@@ -12,9 +12,6 @@ public class StageBuilder
 
     public StageInfo LoadStage(int _stage)
     {
-        // 로딩된 스테이지 파일 이름
-        Debug.Log($"Load Stage : Stage/{GetFileName(_stage)}");
-
         //1. 리소스 파일에서 텍스트를 읽어온다.
         TextAsset textAsset = Resources.Load<TextAsset>($"Stage/{GetFileName(_stage)}");
         if (textAsset != null)

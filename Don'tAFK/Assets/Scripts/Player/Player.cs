@@ -49,6 +49,17 @@ public class Player : MonoBehaviour
         PlayerAutoAttackLevel = PlayerStatus.Instance.PlayerAutoAttackLevel;
         PlayerAllAttackLevel = PlayerStatus.Instance.PlayerAllAttackLevel;
 
+        Debug.Log(PlayerAttackPower);
+        Debug.Log(PlayerAttackSpeed);
+        Debug.Log(PlayerAttackArea);
+        Debug.Log(PlayerMaxHP);
+        Debug.Log(PlayerHPRegen);
+        Debug.Log(PlayerArmor);
+        Debug.Log(PlayerGoldLevel);
+        Debug.Log(PlayerRebirthLevel);
+        Debug.Log(PlayerAutoAttackLevel);
+        Debug.Log(PlayerAllAttackLevel);
+
 
         PlayerHP = PlayerMaxHP;
         m_PlayerHPText.text = PlayerHP.ToString();

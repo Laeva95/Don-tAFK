@@ -113,6 +113,7 @@ public class PlayerUpgrade : MonoBehaviour
     private void Start()
     {
         UpdateText();
+        PlayerStatus.Instance.PlayerStatusUpdate();
     }
     public void UpdateText()
     {
@@ -128,34 +129,39 @@ public class PlayerUpgrade : MonoBehaviour
         m_AllText.text = "Fullscreen Attack\n" + (60 - (PlayerAllAttackLevel * 1)).ToString() + " sec";
 
         m_PowerBtnText.text = (25 * (1 + PlayerAttackPowerLevel)).ToString() + "\nGold";
-        m_SpeedBtnText.text = (300 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
+        m_SpeedBtnText.text = (100 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
         m_AreaBtnText.text = (100 * (1 + PlayerAttackAreaLevel)).ToString() + "\nGold";
         m_MaxHPBtnText.text = (50 * (1 + PlayerMaxHPLevel)).ToString() + "\nGold";
         m_HPRegenBtnText.text = (200 * (1 + PlayerHPRegenLevel)).ToString() + "\nGold";
         m_ArmorBtnText.text = (200 * (1 + PlayerArmorLevel)).ToString() + "\nGold";
         m_GoldBtnText.text = (100 * (1 + PlayerGoldLevel)).ToString() + "\nGold";
         m_RebirthBtnText.text = (100 * (1 + PlayerRebirthLevel)).ToString() + "\nGold";
-        m_AutoBtnText.text = (200 * (1 + PlayerAutoAttackLevel)).ToString() + "\nGold";
-        m_AllBtnText.text = (200 * (1 + PlayerAllAttackLevel)).ToString() + "\nGold";
+        m_AutoBtnText.text = (250 * (1 + PlayerAutoAttackLevel)).ToString() + "\nGold";
+        m_AllBtnText.text = (500 * (1 + PlayerAllAttackLevel)).ToString() + "\nGold";
 
         if (PlayerAttackSpeedLevel >= 10)
         {
             m_SpeedBtn.interactable = false;
+            m_SpeedBtnText.text = "Max";
         }
         if (PlayerAttackAreaLevel >= 30)
         {
             m_AreaBtn.interactable = false;
+            m_AreaBtnText.text = "Max";
         }
         if (PlayerAutoAttackLevel >= 30)
         {
             m_AutoBtn.interactable = false;
+            m_AutoBtnText.text = "Max";
         }
         if (PlayerAllAttackLevel >= 40)
         {
             m_AllBtn.interactable = false;
+            m_AllBtnText.text = "Max";
         }
 
         m_TopUI.UpdateText();
+        PlayerStatus.Instance.PlayerStatusUpdate();
     }
 
     public void AttackPowerBtn()
@@ -169,9 +175,9 @@ public class PlayerUpgrade : MonoBehaviour
     }
     public void AttackSpeedBtn()
     {
-        if ((300 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((100 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (300 * (1 + PlayerAttackSpeedLevel));
+            PlayerResource.Instance.PlayerGold -= (100 * (1 + PlayerAttackSpeedLevel));
             PlayerAttackSpeedLevel++;
 
             UpdateText();
@@ -234,9 +240,9 @@ public class PlayerUpgrade : MonoBehaviour
     }
     public void AutoBtn()
     {
-        if ((200 * (1 + PlayerAutoAttackLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((250 * (1 + PlayerAutoAttackLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (200 * (1 + PlayerAutoAttackLevel));
+            PlayerResource.Instance.PlayerGold -= (250 * (1 + PlayerAutoAttackLevel));
             PlayerAutoAttackLevel++;
 
             UpdateText();
@@ -244,9 +250,9 @@ public class PlayerUpgrade : MonoBehaviour
     }
     public void AllBtn()
     {
-        if ((200 * (1 + PlayerAllAttackLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((500 * (1 + PlayerAllAttackLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (200 * (1 + PlayerAllAttackLevel));
+            PlayerResource.Instance.PlayerGold -= (500 * (1 + PlayerAllAttackLevel));
             PlayerAllAttackLevel++;
 
             UpdateText();
