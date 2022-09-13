@@ -15,6 +15,7 @@ public class TopUI : MonoBehaviour
         m_GoldText.text = PlayerResource.Instance.PlayerGold.ToString() + " Gold";
         m_RebirthPointText.text = PlayerResource.Instance.PlayerRebirthPoint.ToString() + " RP";
         m_ClearStageText.text = PlayerResource.Instance.PlayerClearStage.ToString() + " Stage";
+
     }
 
 }

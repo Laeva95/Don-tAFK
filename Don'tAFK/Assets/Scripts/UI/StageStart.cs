@@ -9,6 +9,6 @@ public class StageStart : MonoBehaviour
     {
         PlayerStatus.Instance.PlayerStatusUpdate();
 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }

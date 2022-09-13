@@ -15,7 +15,7 @@ public abstract class Monster : MonoBehaviour
     protected WaitForSeconds m_AttackDelay00;                // 몬스터 공격 전 간격
     protected WaitForSeconds m_AttackDelay01;                // 몬스터 공격 후 간격
     protected bool m_IsAttack;                    // 몬스터 공격 중복 방지 변수
-    protected int m_MonsterGold;
+    protected float m_MonsterGold;
     protected int m_MonsterKey;
 
     protected WaitForSeconds m_MoveDelay;                // 몬스터 이동 간격
@@ -104,7 +104,7 @@ public abstract class Monster : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         ObjectPoolingManager.Instance.InsertQueue(gameObject, m_MonsterKey);
-        PlayerResource.Instance.PlayerGold += m_MonsterGold;
+        PlayerResource.Instance.PlayerGold += (int)(m_MonsterGold * PlayerStatus.Instance.PlayerGoldLevel);
 
         Debug.Log(PlayerResource.Instance.PlayerGold);
     }

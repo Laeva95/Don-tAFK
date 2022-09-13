@@ -16,7 +16,13 @@ public class MainBtn : MonoBehaviour
     private GameObject m_ShopSet;
 
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
     private void CloseUISet()
     {
         m_UpgradeSet.SetActive(false);

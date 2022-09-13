@@ -32,10 +32,22 @@ public class MonsterSpawnManager : MonoBehaviour
 
             m_StageBuilder.StageBuild(Stage);
 
-            for (int i = 0; i < m_StageBuilder.m_StageInfo.num.Length; i++)
+            if (m_StageBuilder.m_StageInfo != null)
             {
-                MonsterGenerate(m_StageBuilder.m_StageInfo.num[i], m_StageBuilder.m_StageInfo.count[i]);
-                yield return null;
+                for (int i = 0; i < m_StageBuilder.m_StageInfo.num.Length; i++)
+                {
+                    MonsterGenerate(m_StageBuilder.m_StageInfo.num[i], m_StageBuilder.m_StageInfo.count[i]);
+                    yield return null;
+                }
+            }
+            else
+            {
+                int ran = Random.Range(0, 1);
+                for (int i = 0; i < 15; i++)
+                {
+                    MonsterGenerate(ran, 1);
+                    yield return null;
+                }
             }
 
             while (m_MonsterCount > 0)

@@ -11,6 +11,11 @@ public class PlayerStatus : MonoBehaviour
     public int PlayerMaxHP { get; private set; }
     public int PlayerHPRegen { get; private set; }
     public int PlayerArmor { get; private set; }
+    public float PlayerGoldLevel { get; private set; }
+    public float PlayerRebirthLevel { get; private set; }
+    public float PlayerAutoAttackLevel { get; private set; }
+    public int PlayerAllAttackLevel { get; private set; }
+
 
 
     private static PlayerStatus instance;
@@ -44,11 +49,15 @@ public class PlayerStatus : MonoBehaviour
     {
         PlayerUpgrade up =  FindObjectOfType<PlayerUpgrade>();
 
-        PlayerAttackPower = 5 + (up.PlayerAttackPowerLevel * 2);
-        PlayerAttackSpeed = 0.5f - (up.PlayerAttackSpeedLevel * 0.1f);
+        PlayerAttackPower = 10 + (up.PlayerAttackPowerLevel * 2);
+        PlayerAttackSpeed = 0.5f - (up.PlayerAttackSpeedLevel * 0.03f);
         PlayerAttackArea = 0.25f + (up.PlayerAttackAreaLevel * 0.025f);
         PlayerMaxHP = 10 + (up.PlayerMaxHPLevel * 2);
         PlayerHPRegen = 0 + (up.PlayerHPRegenLevel * 1);
         PlayerArmor = 0 + (up.PlayerArmorLevel * 1);
+        PlayerGoldLevel = 1 + (up.PlayerGoldLevel * 0.02f);
+        PlayerRebirthLevel = 1 + (up.PlayerRebirthLevel * 0.02f);
+        PlayerAutoAttackLevel = 2 - (up.PlayerAutoAttackLevel * 0.05f);
+        PlayerAllAttackLevel = 60 - (up.PlayerAllAttackLevel * 1);
     }
 }
