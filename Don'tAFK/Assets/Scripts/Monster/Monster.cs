@@ -88,6 +88,11 @@ public abstract class Monster : MonoBehaviour
     }
     public virtual void MonsterOnDamage(int _damage)
     {
+        if (m_MonsterHP <= 0)
+        {
+            return;
+        }
+
         m_MonsterHP -= _damage;
 
         StartCoroutine(MonsterOnDamageEffect());

@@ -231,6 +231,8 @@ public class Player : MonoBehaviour
             {
                 PlayerHP = PlayerMaxHP;
             }
+
+            m_PlayerHPText.text = PlayerHP.ToString();
         }
     }
 }

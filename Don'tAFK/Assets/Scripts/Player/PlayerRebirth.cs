@@ -1,16 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerRebirth : MonoBehaviour
 {
     [SerializeField] PlayerUpgrade m_Upgrade;
+    [SerializeField] StageStart m_Start;
+    [SerializeField] Text m_RebirthPointText;
+
+    private void Start()
+    {
+        UpdateText();
+    }
     public void RebirthBtn()
     {
         if (PlayerResource.Instance.PlayerClearStage > 25)
         {
-            PlayerResource.Instance.PlayerRebirthPoint += (int)(Mathf.Sqrt(PlayerResource.Instance.PlayerClearStage) 
+            PlayerResource.Instance.PlayerRebirthPoint += (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.5f) 
                 * PlayerStatus.Instance.PlayerRebirthLevel);
 
             PlayerResource.Instance.PlayerClearStage = 0;
+            PlayerResource.Instance.PlayerGold = 0;
 
             m_Upgrade.PlayerAllAttackLevel = 0;
             m_Upgrade.PlayerArmorLevel = 0;
@@ -24,17 +33,19 @@ public class PlayerRebirth : MonoBehaviour
             m_Upgrade.PlayerRebirthLevel = 0;
 
             m_Upgrade.UpdateText();
+            m_Start.BestStageUpdate();
+            UpdateText();
         }
     }
     public void ADRebirthBtn()
     {
         if (PlayerResource.Instance.PlayerClearStage > 25)
         {
-            float rebirth = PlayerResource.Instance.PlayerClearStage * 0.1f;
-
-            PlayerResource.Instance.PlayerRebirthPoint += (int)(rebirth * rebirth * 0.5f) * 2;
+            PlayerResource.Instance.PlayerRebirthPoint += (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.5f)
+                * PlayerStatus.Instance.PlayerRebirthLevel) * 2;
 
             PlayerResource.Instance.PlayerClearStage = 0;
+            PlayerResource.Instance.PlayerGold = 0;
 
             m_Upgrade.PlayerAllAttackLevel = 0;
             m_Upgrade.PlayerArmorLevel = 0;
@@ -48,6 +59,14 @@ public class PlayerRebirth : MonoBehaviour
             m_Upgrade.PlayerRebirthLevel = 0;
 
             m_Upgrade.UpdateText();
+            m_Start.BestStageUpdate();
+            UpdateText();
         }
+    }
+
+    public void UpdateText()
+    {
+        m_RebirthPointText.text = "Expected Gain\n" + (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.5f)
+                * PlayerStatus.Instance.PlayerRebirthLevel) + " RP";
     }
 }

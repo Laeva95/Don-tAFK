@@ -113,14 +113,13 @@ public class PlayerUpgrade : MonoBehaviour
     private void Start()
     {
         UpdateText();
-        PlayerStatus.Instance.PlayerStatusUpdate();
     }
     public void UpdateText()
     {
         m_PowerText.text = "Power\n" + (10 + (PlayerAttackPowerLevel * 2)).ToString();
-        m_SpeedText.text = "Cooldown\n" + (0.5f - (PlayerAttackSpeedLevel * 0.03f)).ToString() + " sec";
+        m_SpeedText.text = "Touch Cooldown\n" + (0.5f - (PlayerAttackSpeedLevel * 0.03f)).ToString() + " sec";
         m_AreaText.text = "Damage Radius\n" + (0.25f + (PlayerAttackAreaLevel * 0.025f)).ToString();
-        m_MaxHPText.text = "Max HP\n" + (10 + (PlayerMaxHPLevel * 2)).ToString();
+        m_MaxHPText.text = "Max HP\n" + (20 + (PlayerMaxHPLevel * 5)).ToString();
         m_HPRegenText.text = "Regeneration\n" + (0 + (PlayerHPRegenLevel * 1)).ToString();
         m_ArmorText.text = "Damage Reduction\n" + (0 + (PlayerArmorLevel * 1)).ToString();
         m_GoldText.text = "Earn Gold\n" + (100 + (PlayerGoldLevel * 2)).ToString() + " %";
@@ -128,10 +127,10 @@ public class PlayerUpgrade : MonoBehaviour
         m_AutoText.text = "Auto Touch\n" + (2 - (PlayerAutoAttackLevel * 0.05f)).ToString() + " sec";
         m_AllText.text = "Fullscreen Attack\n" + (60 - (PlayerAllAttackLevel * 1)).ToString() + " sec";
 
-        m_PowerBtnText.text = (25 * (1 + PlayerAttackPowerLevel)).ToString() + "\nGold";
-        m_SpeedBtnText.text = (100 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
-        m_AreaBtnText.text = (100 * (1 + PlayerAttackAreaLevel)).ToString() + "\nGold";
-        m_MaxHPBtnText.text = (50 * (1 + PlayerMaxHPLevel)).ToString() + "\nGold";
+        m_PowerBtnText.text = (50 * (1 + PlayerAttackPowerLevel)).ToString() + "\nGold";
+        m_SpeedBtnText.text = (200 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
+        m_AreaBtnText.text = (250 * (1 + PlayerAttackAreaLevel)).ToString() + "\nGold";
+        m_MaxHPBtnText.text = (100 * (1 + PlayerMaxHPLevel)).ToString() + "\nGold";
         m_HPRegenBtnText.text = (200 * (1 + PlayerHPRegenLevel)).ToString() + "\nGold";
         m_ArmorBtnText.text = (200 * (1 + PlayerArmorLevel)).ToString() + "\nGold";
         m_GoldBtnText.text = (100 * (1 + PlayerGoldLevel)).ToString() + "\nGold";
@@ -166,18 +165,18 @@ public class PlayerUpgrade : MonoBehaviour
 
     public void AttackPowerBtn()
     {
-        if ((25 * (1 + PlayerAttackPowerLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((50 * (1 + PlayerAttackPowerLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (25 * (1 + PlayerAttackPowerLevel));
+            PlayerResource.Instance.PlayerGold -= (50 * (1 + PlayerAttackPowerLevel));
             PlayerAttackPowerLevel++;
             UpdateText();
         }
     }
     public void AttackSpeedBtn()
     {
-        if ((100 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((200 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (100 * (1 + PlayerAttackSpeedLevel));
+            PlayerResource.Instance.PlayerGold -= (200 * (1 + PlayerAttackSpeedLevel));
             PlayerAttackSpeedLevel++;
 
             UpdateText();
@@ -185,9 +184,9 @@ public class PlayerUpgrade : MonoBehaviour
     }
     public void AttackAreaBtn()
     {
-        if ((100 * (1 + PlayerAttackAreaLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((250 * (1 + PlayerAttackAreaLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (100 * (1 + PlayerAttackAreaLevel));
+            PlayerResource.Instance.PlayerGold -= (250 * (1 + PlayerAttackAreaLevel));
             PlayerAttackAreaLevel++;
 
             UpdateText();
@@ -195,9 +194,9 @@ public class PlayerUpgrade : MonoBehaviour
     }
     public void HPBtn()
     {
-        if ((50 * (1 + PlayerMaxHPLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((100 * (1 + PlayerMaxHPLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (50 * (1 + PlayerMaxHPLevel));
+            PlayerResource.Instance.PlayerGold -= (100 * (1 + PlayerMaxHPLevel));
             PlayerMaxHPLevel++;
             UpdateText();
         }

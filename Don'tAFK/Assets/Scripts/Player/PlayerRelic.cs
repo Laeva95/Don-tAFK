@@ -16,23 +16,23 @@ public class PlayerRelic : MonoBehaviour
     public int PlayerAttackPowerLevel
     {
         get
-        { return PlayerPrefs.GetInt("PlayerAttackPowerLevel", 0); }
+        { return PlayerPrefs.GetInt("RelicAttackPowerLevel", 0); }
         set
-        { PlayerPrefs.SetInt("PlayerAttackPowerLevel", value); }
+        { PlayerPrefs.SetInt("RelicAttackPowerLevel", value); }
     }
     public int PlayerGoldLevel
     {
         get
-        { return PlayerPrefs.GetInt("PlayerGoldLevel", 0); }
+        { return PlayerPrefs.GetInt("RelicGoldLevel", 0); }
         set
-        { PlayerPrefs.SetInt("PlayerGoldLevel", value); }
+        { PlayerPrefs.SetInt("RelicGoldLevel", value); }
     }
     public int PlayerMaxHPLevel
     {
         get
-        { return PlayerPrefs.GetInt("PlayerMaxHPLevel", 0); }
+        { return PlayerPrefs.GetInt("RelicMaxHPLevel", 0); }
         set
-        { PlayerPrefs.SetInt("PlayerMaxHPLevel", value); }
+        { PlayerPrefs.SetInt("RelicMaxHPLevel", value); }
     }
 
     private void Start()

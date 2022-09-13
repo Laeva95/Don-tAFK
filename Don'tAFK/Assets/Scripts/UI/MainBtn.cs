@@ -22,6 +22,10 @@ public class MainBtn : MonoBehaviour
         {
             Application.Quit();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerResource.Instance.PlayerClearStage++;
+        }
     }
     private void CloseUISet()
     {

@@ -66,7 +66,7 @@ public class MonsterSpawnManager : MonoBehaviour
             float y = Random.Range(-1f, 1f);
             Vector3 dir = new Vector3(x, y, 0).normalized;
 
-            float distance = Random.Range(2.5f, 3f);
+            float distance = Random.Range(2.3f, 2.7f);
 
             // 플레이어 위치에서 일정 거리 떨어진 위치에 몬스터 생성
             GameObject obj = ObjectPoolingManager.Instance.GetQueue(_monsterNum);
