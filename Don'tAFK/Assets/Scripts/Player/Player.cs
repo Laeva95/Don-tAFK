@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
             for (int i = 1; i <= PlayerAutoAttackLevel * 20; i++)
             {
                 yield return m_miniSec;
-                m_AutoTouchText.text = $"{PlayerAutoAttackLevel - (i * 0.05f):0.00} sec";
+                m_AutoTouchText.text = $"{PlayerAutoAttackLevel - (i * 0.05f):0.00}\nsec";
             }
 
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 2.5f, m_MonsterLayer);
@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
             for (int i = 1; i <= PlayerAllAttackLevel; i++)
             {
                 yield return m_OneSec;
-                m_FullscreenAttackText.text = $"{PlayerAllAttackLevel - i} sec";
+                m_FullscreenAttackText.text = $"{PlayerAllAttackLevel - i}\nsec";
             }
 
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 3f, m_MonsterLayer);

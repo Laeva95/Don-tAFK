@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainBtn : MonoBehaviour
 {
@@ -16,13 +17,27 @@ public class MainBtn : MonoBehaviour
     private GameObject m_ShopSet;
     [SerializeField]
     private GameObject m_SoundSliderSet;
-
+    [SerializeField]
+    private Text m_GoldADText;
+    [SerializeField]
+    private Button m_GoldADBtn;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+        }
+        if (PlayerResource.Instance.GoldADCool < 0)
+        {
+            PlayerResource.Instance.GoldADCool -= Time.deltaTime;
+            m_GoldADText.text = $"{PlayerResource.Instance.GoldADCool:0.00}\nsec";
+            m_GoldADBtn.interactable = false;
+        }
+        else
+        {
+            m_GoldADText.text = $"Rewarded\nAD";
+            m_GoldADBtn.interactable = true;
         }
     }
     private void CloseUISet()

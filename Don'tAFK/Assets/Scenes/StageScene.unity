@@ -924,7 +924,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b599984f7502ce04fa68947654bd608f, type: 3}
-    m_FontSize: 25
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -935,7 +935,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 60 sec
+  m_Text: '60
+
+    sec'
 --- !u!222 &358516143
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4450,7 +4452,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2 sec
+  m_Text: '2.00
+
+    sec'
 --- !u!222 &1670355471
 CanvasRenderer:
   m_ObjectHideFlags: 0

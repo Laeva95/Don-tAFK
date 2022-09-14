@@ -52,7 +52,7 @@ public class MonsterSpawnManager : MonoBehaviour
                     yield return null;
                 }
             }
-
+            SoundManager.Instance.SoundPlay(SOUND_NAME.MONSTERSPAWN);
             while (m_MonsterCount > 0)
             {
                 yield return null;
@@ -74,9 +74,6 @@ public class MonsterSpawnManager : MonoBehaviour
             // 플레이어 위치에서 일정 거리 떨어진 위치에 몬스터 생성
             GameObject obj = ObjectPoolingManager.Instance.GetQueue(_monsterNum);
             obj.transform.position = m_Player.position + dir * distance;
-
-
-            SoundManager.Instance.SoundPlay(SOUND_NAME.MONSTERSPAWN);
         }
     }
 }

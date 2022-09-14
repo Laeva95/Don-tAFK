@@ -26,6 +26,14 @@ public class PlayerResource : MonoBehaviour
         { PlayerPrefs.SetInt("PlayerClearStage", value); }
     }
 
+    public float GoldADCool
+    {
+        get
+        { return PlayerPrefs.GetFloat("GoldADCool", 0); }
+        set
+        { PlayerPrefs.SetFloat("GoldADCool", value); }
+    }
+
     private static PlayerResource instance;
     public static PlayerResource Instance
     {

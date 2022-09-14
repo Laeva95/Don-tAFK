@@ -4768,6 +4768,8 @@ MonoBehaviour:
   m_RebirthSet: {fileID: 1391431183}
   m_ShopSet: {fileID: 69077967}
   m_SoundSliderSet: {fileID: 1537704651}
+  m_GoldADText: {fileID: 2068204595}
+  m_GoldADBtn: {fileID: 897837697}
 --- !u!1 &978269959
 GameObject:
   m_ObjectHideFlags: 0
@@ -7368,7 +7370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0.8}
+  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
