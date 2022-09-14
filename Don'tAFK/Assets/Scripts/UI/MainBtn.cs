@@ -14,6 +14,8 @@ public class MainBtn : MonoBehaviour
     private GameObject m_RebirthSet;
     [SerializeField]
     private GameObject m_ShopSet;
+    [SerializeField]
+    private GameObject m_SoundSliderSet;
 
 
     private void Update()
@@ -21,10 +23,6 @@ public class MainBtn : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerResource.Instance.PlayerClearStage++;
         }
     }
     private void CloseUISet()
@@ -34,6 +32,8 @@ public class MainBtn : MonoBehaviour
         m_StageSet.SetActive(false);
         m_RebirthSet.SetActive(false);
         m_ShopSet.SetActive(false);
+        m_SoundSliderSet.SetActive(false);
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void OpenUpgradeUISet()
     {

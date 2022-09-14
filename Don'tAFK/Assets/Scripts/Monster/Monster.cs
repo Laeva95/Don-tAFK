@@ -47,7 +47,7 @@ public abstract class Monster : MonoBehaviour
     // 일부 클래스에서는 따로 작성할 필요가 있으므로 가상 함수로 작성
     protected virtual IEnumerator MonsterMove()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         while (gameObject.activeSelf)
         {
@@ -80,6 +80,7 @@ public abstract class Monster : MonoBehaviour
         if (m_MonsterHP > 0)
         {
             player.PlayerOnDamage(m_MonsterDamage);
+            SoundManager.Instance.SoundPlay(SOUND_NAME.MONSTERATTACK);
         }
 
         yield return m_AttackDelay01;
@@ -110,6 +111,8 @@ public abstract class Monster : MonoBehaviour
 
         ObjectPoolingManager.Instance.InsertQueue(gameObject, m_MonsterKey);
         PlayerResource.Instance.PlayerGold += (int)(m_MonsterGold * PlayerStatus.Instance.PlayerGoldLevel);
+        GameManager.Instance.StageGold += (int)(m_MonsterGold * PlayerStatus.Instance.PlayerGoldLevel);
+        StageTopUI.Instance.UpdateText();
     }
 
     // 몬스터 피격 이펙트 코루틴

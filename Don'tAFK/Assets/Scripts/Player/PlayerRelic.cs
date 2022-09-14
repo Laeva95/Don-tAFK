@@ -9,9 +9,11 @@ public class PlayerRelic : MonoBehaviour
     [SerializeField] Text m_PowerText;
     [SerializeField] Text m_MaxHPText;
     [SerializeField] Text m_GoldText;
+    [SerializeField] Text m_StageCountText;
     [SerializeField] Text m_PowerBtnText;
     [SerializeField] Text m_MaxHPBtnText;
     [SerializeField] Text m_GoldBtnText;
+    [SerializeField] Text m_StageCountBtnText;
 
     public int PlayerAttackPowerLevel
     {
@@ -34,6 +36,13 @@ public class PlayerRelic : MonoBehaviour
         set
         { PlayerPrefs.SetInt("RelicMaxHPLevel", value); }
     }
+    public int PlayerStageCount
+    {
+        get
+        { return PlayerPrefs.GetInt("RelicStageCount", 1); }
+        set
+        { PlayerPrefs.SetInt("RelicStageCount", value); }
+    }
 
     private void Start()
     {
@@ -41,13 +50,15 @@ public class PlayerRelic : MonoBehaviour
     }
     public void UpdateText()
     {
-        m_PowerText.text = "Power\n+" + (10 * (PlayerAttackPowerLevel)).ToString() + " %";
-        m_MaxHPText.text = "Max HP\n+" + (10 * (PlayerMaxHPLevel)).ToString() + " %";
+        m_PowerText.text = "Power\n+" + (20 * (PlayerAttackPowerLevel)).ToString() + " %";
+        m_MaxHPText.text = "Max HP\n+" + (20 * (PlayerMaxHPLevel)).ToString() + " %";
         m_GoldText.text = "Earn Gold\n+" + (10 * (PlayerGoldLevel)).ToString() + " %";
+        m_StageCountText.text = "Stage Count\n+" + PlayerStageCount.ToString();
 
         m_PowerBtnText.text = (5 * (1 + PlayerAttackPowerLevel)).ToString() + "\nRP";
         m_MaxHPBtnText.text = (5 * (1 + PlayerMaxHPLevel)).ToString() + "\nRP";
         m_GoldBtnText.text = (10 * (1 + PlayerGoldLevel)).ToString() + "\nRP";
+        m_StageCountBtnText.text = (100 * (PlayerStageCount)).ToString() + "\nRP";
 
         m_TopUI.UpdateText();
         PlayerStatus.Instance.PlayerStatusUpdate();
@@ -61,6 +72,7 @@ public class PlayerRelic : MonoBehaviour
             PlayerAttackPowerLevel++;
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void MaxHPBtn()
     {
@@ -71,6 +83,7 @@ public class PlayerRelic : MonoBehaviour
 
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void GoldBtn()
     {
@@ -81,5 +94,17 @@ public class PlayerRelic : MonoBehaviour
 
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
+    }
+    public void StageCountBtn()
+    {
+        if ((100 * (PlayerStageCount)) <= PlayerResource.Instance.PlayerRebirthPoint)
+        {
+            PlayerResource.Instance.PlayerRebirthPoint -= (100 * (PlayerStageCount));
+            PlayerStageCount++;
+
+            UpdateText();
+        }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
 }

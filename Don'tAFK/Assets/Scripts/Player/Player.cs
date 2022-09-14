@@ -16,14 +16,21 @@ public class Player : MonoBehaviour
     public float PlayerRebirthLevel { get; private set; }
     public float PlayerAutoAttackLevel { get; private set; }
     public int PlayerAllAttackLevel { get; private set; }
+    public int PlayerStageCountLevel { get; private set; }
 
     private bool m_IsAttack;
     SpriteRenderer m_SpRen;
 
+    WaitForSeconds m_OneSec = new WaitForSeconds(1f);
+    WaitForSeconds m_miniSec = new WaitForSeconds(0.05f);
+
     [SerializeField] Animator m_CameraAni;
     [SerializeField] LayerMask m_MonsterLayer;
     [SerializeField] Text m_PlayerHPText;
-    
+    [SerializeField] Text m_FullscreenAttackText;
+    [SerializeField] Text m_AutoTouchText;
+
+
 
     private void Awake()
     {
@@ -48,6 +55,7 @@ public class Player : MonoBehaviour
         PlayerRebirthLevel = PlayerStatus.Instance.PlayerRebirthLevel;
         PlayerAutoAttackLevel = PlayerStatus.Instance.PlayerAutoAttackLevel;
         PlayerAllAttackLevel = PlayerStatus.Instance.PlayerAllAttackLevel;
+        PlayerStageCountLevel = PlayerStatus.Instance.PlayerStageCountLevel;
 
         Debug.Log(PlayerAttackPower);
         Debug.Log(PlayerAttackSpeed);
@@ -59,6 +67,7 @@ public class Player : MonoBehaviour
         Debug.Log(PlayerRebirthLevel);
         Debug.Log(PlayerAutoAttackLevel);
         Debug.Log(PlayerAllAttackLevel);
+        Debug.Log(PlayerStageCountLevel);
 
 
         PlayerHP = PlayerMaxHP;
@@ -109,18 +118,25 @@ public class Player : MonoBehaviour
             Vector3 dir = (cols[i].gameObject.transform.position - transform.position).normalized;
             monster.Rigid.AddForce(dir * 0.3f, ForceMode2D.Impulse);
         }
+
+        SoundManager.Instance.SoundPlay(SOUND_NAME.PLAYERATTACK);
     }
 
     public void PlayerOnDamage(int _damage)
     {
         int damage = _damage - PlayerArmor;
 
-        if (damage <= 0)
+        if (damage <= 1)
         {
-            damage = 0;
+            damage = 1;
         }
 
         PlayerHP -= damage;
+
+        if (PlayerHP <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
 
         m_PlayerHPText.text = PlayerHP.ToString();
 
@@ -140,7 +156,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
         while (gameObject.activeSelf)
         {
-            yield return new WaitForSeconds(PlayerAutoAttackLevel);
+            for (int i = 1; i <= PlayerAutoAttackLevel * 20; i++)
+            {
+                yield return m_miniSec;
+                m_AutoTouchText.text = $"{PlayerAutoAttackLevel - (i * 0.05f):0.00} sec";
+            }
 
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 2.5f, m_MonsterLayer);
             // 가장 가까운 타겟
@@ -188,6 +208,7 @@ public class Player : MonoBehaviour
                     Vector3 dir = (cols2[i].gameObject.transform.position - transform.position).normalized;
                     monster.Rigid.AddForce(dir * 0.3f, ForceMode2D.Impulse);
                 }
+                SoundManager.Instance.SoundPlay(SOUND_NAME.PLAYERATTACK);
             }
         }
     }
@@ -196,7 +217,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
         while (gameObject.activeSelf)
         {
-            yield return new WaitForSeconds(PlayerAllAttackLevel);
+            for (int i = 1; i <= PlayerAllAttackLevel; i++)
+            {
+                yield return m_OneSec;
+                m_FullscreenAttackText.text = $"{PlayerAllAttackLevel - i} sec";
+            }
 
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, 3f, m_MonsterLayer);
 
@@ -214,7 +239,7 @@ public class Player : MonoBehaviour
                 Vector3 dir = (cols[i].gameObject.transform.position - transform.position).normalized;
                 monster.Rigid.AddForce(dir * 0.3f, ForceMode2D.Impulse);
             }
-
+            SoundManager.Instance.SoundPlay(SOUND_NAME.PLAYERALLATTACK);
             m_CameraAni.SetTrigger("AllAttack");
         }
     }

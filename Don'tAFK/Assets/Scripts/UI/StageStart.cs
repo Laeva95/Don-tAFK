@@ -9,6 +9,7 @@ public class StageStart : MonoBehaviour
     [SerializeField] Text m_BestStageText;
     public void StartStageBtn()
     {
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
         PlayerStatus.Instance.PlayerStatusUpdate();
 
         SceneManager.LoadScene(1);

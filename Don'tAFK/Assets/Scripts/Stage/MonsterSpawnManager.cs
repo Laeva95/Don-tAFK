@@ -26,9 +26,12 @@ public class MonsterSpawnManager : MonoBehaviour
             {
                 PlayerResource.Instance.PlayerClearStage = Stage;
             }
-            Stage++;
 
-            yield return new WaitForSeconds(1f);
+            Stage += PlayerStatus.Instance.PlayerStageCountLevel;
+
+            StageTopUI.Instance.UpdateText();
+
+            yield return new WaitForSeconds(0.5f);
 
             m_StageBuilder.StageBuild(Stage);
 
@@ -42,9 +45,9 @@ public class MonsterSpawnManager : MonoBehaviour
             }
             else
             {
-                int ran = Random.Range(0, 1);
-                for (int i = 0; i < 15; i++)
+                for (int i = 0; i < (15 + Stage*0.02f); i++)
                 {
+                    int ran = Random.Range(0, 4);
                     MonsterGenerate(ran, 1);
                     yield return null;
                 }
@@ -66,11 +69,14 @@ public class MonsterSpawnManager : MonoBehaviour
             float y = Random.Range(-1f, 1f);
             Vector3 dir = new Vector3(x, y, 0).normalized;
 
-            float distance = Random.Range(2.3f, 2.7f);
+            float distance = Random.Range(2f, 2.7f);
 
             // 플레이어 위치에서 일정 거리 떨어진 위치에 몬스터 생성
             GameObject obj = ObjectPoolingManager.Instance.GetQueue(_monsterNum);
             obj.transform.position = m_Player.position + dir * distance;
+
+
+            SoundManager.Instance.SoundPlay(SOUND_NAME.MONSTERSPAWN);
         }
     }
 }

@@ -112,6 +112,7 @@ public class PlayerUpgrade : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         UpdateText();
     }
     public void UpdateText()
@@ -135,7 +136,7 @@ public class PlayerUpgrade : MonoBehaviour
         m_ArmorBtnText.text = (200 * (1 + PlayerArmorLevel)).ToString() + "\nGold";
         m_GoldBtnText.text = (100 * (1 + PlayerGoldLevel)).ToString() + "\nGold";
         m_RebirthBtnText.text = (100 * (1 + PlayerRebirthLevel)).ToString() + "\nGold";
-        m_AutoBtnText.text = (250 * (1 + PlayerAutoAttackLevel)).ToString() + "\nGold";
+        m_AutoBtnText.text = (150 * (1 + PlayerAutoAttackLevel)).ToString() + "\nGold";
         m_AllBtnText.text = (500 * (1 + PlayerAllAttackLevel)).ToString() + "\nGold";
 
         if (PlayerAttackSpeedLevel >= 10)
@@ -143,20 +144,36 @@ public class PlayerUpgrade : MonoBehaviour
             m_SpeedBtn.interactable = false;
             m_SpeedBtnText.text = "Max";
         }
+        else
+        {
+            m_SpeedBtn.interactable = true;
+        }
         if (PlayerAttackAreaLevel >= 30)
         {
             m_AreaBtn.interactable = false;
             m_AreaBtnText.text = "Max";
+        }
+        else
+        {
+            m_AreaBtn.interactable = true;
         }
         if (PlayerAutoAttackLevel >= 30)
         {
             m_AutoBtn.interactable = false;
             m_AutoBtnText.text = "Max";
         }
+        else
+        {
+            m_AutoBtn.interactable = true;
+        }
         if (PlayerAllAttackLevel >= 40)
         {
             m_AllBtn.interactable = false;
             m_AllBtnText.text = "Max";
+        }
+        else
+        {
+            m_AllBtn.interactable = true;
         }
 
         m_TopUI.UpdateText();
@@ -171,6 +188,7 @@ public class PlayerUpgrade : MonoBehaviour
             PlayerAttackPowerLevel++;
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void AttackSpeedBtn()
     {
@@ -181,6 +199,7 @@ public class PlayerUpgrade : MonoBehaviour
 
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void AttackAreaBtn()
     {
@@ -191,6 +210,7 @@ public class PlayerUpgrade : MonoBehaviour
 
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void HPBtn()
     {
@@ -200,6 +220,7 @@ public class PlayerUpgrade : MonoBehaviour
             PlayerMaxHPLevel++;
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void HPRegenBtn()
     {
@@ -209,6 +230,7 @@ public class PlayerUpgrade : MonoBehaviour
             PlayerHPRegenLevel++;
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void ArmorBtn()
     {
@@ -218,6 +240,7 @@ public class PlayerUpgrade : MonoBehaviour
             PlayerArmorLevel++;
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void GoldBtn()
     {
@@ -227,6 +250,7 @@ public class PlayerUpgrade : MonoBehaviour
             PlayerGoldLevel++;
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void RebirthBtn()
     {
@@ -236,16 +260,18 @@ public class PlayerUpgrade : MonoBehaviour
             PlayerRebirthLevel++;
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void AutoBtn()
     {
-        if ((250 * (1 + PlayerAutoAttackLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((150 * (1 + PlayerAutoAttackLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (250 * (1 + PlayerAutoAttackLevel));
+            PlayerResource.Instance.PlayerGold -= (150 * (1 + PlayerAutoAttackLevel));
             PlayerAutoAttackLevel++;
 
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
     public void AllBtn()
     {
@@ -256,5 +282,6 @@ public class PlayerUpgrade : MonoBehaviour
 
             UpdateText();
         }
+        SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
     }
 }

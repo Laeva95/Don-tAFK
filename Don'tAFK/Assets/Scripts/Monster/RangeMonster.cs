@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class RangeMonster : Monster
 {
-    private float m_AttackRange;
+    protected float m_AttackRange;
 
 
     protected override IEnumerator MonsterMove()
     {
+        yield return new WaitForSeconds(1.5f);
         while (gameObject.activeSelf)
         {
             Vector3 dir = (m_PlayerTransform.position - transform.position).normalized;
@@ -30,7 +31,30 @@ public class RangeMonster : Monster
     {
         m_IsAttack = true;
 
+        m_Ani.SetTrigger("Attack");
+
         yield return m_AttackDelay00;
+
+        if (m_MonsterHP > 0)
+        {
+            SoundManager.Instance.SoundPlay(SOUND_NAME.MONSTERATTACK2);
+
+            GameObject bullet = ObjectPoolingManager.Instance.GetQueue(ObjectPoolingManager.m_MonsterAttackEffect00Key);
+
+            // 몬스터 불렛에 데미지 부여
+            MonsterBullet pBullet = bullet.GetComponent<MonsterBullet>();
+            pBullet.SetDamage(m_MonsterDamage);
+
+            bullet.transform.position = gameObject.transform.position;
+
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            Vector3 _dir = (m_PlayerTransform.position - transform.position).normalized;
+
+            rigid.velocity = _dir * 2f;
+        }
+
+        yield return m_AttackDelay01;
 
         m_IsAttack = false;
     }
