@@ -13,7 +13,6 @@ public class StageADManager : MonoBehaviour
     {
         var requestConfiguration = new RequestConfiguration
             .Builder()
-            .SetTestDeviceIds(new List<string>() { "803CCBB787F948F3" })
             .build();
 
         MobileAds.SetRequestConfiguration(requestConfiguration);

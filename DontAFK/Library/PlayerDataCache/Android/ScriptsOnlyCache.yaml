@@ -76,43 +76,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1570}
     - Class: 114
-      Script: {instanceID: 1624}
+      Script: {instanceID: 1622}
     - Class: 114
-      Script: {instanceID: 1768}
+      Script: {instanceID: 1766}
     - Class: 114
-      Script: {instanceID: 1780}
+      Script: {instanceID: 1778}
     - Class: 114
-      Script: {instanceID: 1892}
+      Script: {instanceID: 1890}
     - Class: 114
-      Script: {instanceID: 1992}
+      Script: {instanceID: 1990}
     - Class: 114
-      Script: {instanceID: 2136}
+      Script: {instanceID: 2134}
     - Class: 114
-      Script: {instanceID: 2456}
+      Script: {instanceID: 2454}
     - Class: 114
-      Script: {instanceID: 2506}
+      Script: {instanceID: 2504}
     - Class: 114
-      Script: {instanceID: 2560}
+      Script: {instanceID: 2558}
     - Class: 114
-      Script: {instanceID: 2628}
+      Script: {instanceID: 2626}
     - Class: 114
-      Script: {instanceID: 2740}
+      Script: {instanceID: 2738}
     - Class: 114
-      Script: {instanceID: 2748}
+      Script: {instanceID: 2746}
     - Class: 114
-      Script: {instanceID: 2854}
+      Script: {instanceID: 2852}
     - Class: 114
-      Script: {instanceID: 2940}
+      Script: {instanceID: 2938}
     - Class: 114
-      Script: {instanceID: 3024}
+      Script: {instanceID: 3022}
     - Class: 114
-      Script: {instanceID: 3582}
+      Script: {instanceID: 3580}
     - Class: 114
-      Script: {instanceID: 3866}
+      Script: {instanceID: 3864}
     - Class: 114
-      Script: {instanceID: 3986}
+      Script: {instanceID: 3984}
     - Class: 114
-      Script: {instanceID: 4670}
+      Script: {instanceID: 4668}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -161,49 +161,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1570}
     - Class: 114
-      Script: {instanceID: 1688}
+      Script: {instanceID: 1686}
     - Class: 114
-      Script: {instanceID: 1768}
+      Script: {instanceID: 1766}
     - Class: 114
-      Script: {instanceID: 1780}
+      Script: {instanceID: 1778}
     - Class: 114
-      Script: {instanceID: 1908}
+      Script: {instanceID: 1906}
     - Class: 114
-      Script: {instanceID: 2136}
+      Script: {instanceID: 2134}
     - Class: 114
-      Script: {instanceID: 2210}
+      Script: {instanceID: 2208}
     - Class: 114
-      Script: {instanceID: 2288}
+      Script: {instanceID: 2286}
     - Class: 114
-      Script: {instanceID: 2378}
+      Script: {instanceID: 2376}
     - Class: 114
-      Script: {instanceID: 2386}
+      Script: {instanceID: 2384}
     - Class: 114
-      Script: {instanceID: 2452}
+      Script: {instanceID: 2450}
     - Class: 114
-      Script: {instanceID: 2456}
+      Script: {instanceID: 2454}
     - Class: 114
-      Script: {instanceID: 2560}
+      Script: {instanceID: 2558}
     - Class: 114
-      Script: {instanceID: 2740}
+      Script: {instanceID: 2738}
     - Class: 114
-      Script: {instanceID: 2898}
+      Script: {instanceID: 2896}
     - Class: 114
-      Script: {instanceID: 2940}
+      Script: {instanceID: 2938}
     - Class: 114
-      Script: {instanceID: 2988}
+      Script: {instanceID: 2986}
     - Class: 114
-      Script: {instanceID: 3024}
+      Script: {instanceID: 3022}
     - Class: 114
-      Script: {instanceID: 3248}
+      Script: {instanceID: 3246}
     - Class: 114
-      Script: {instanceID: 3820}
+      Script: {instanceID: 3818}
     - Class: 114
-      Script: {instanceID: 3982}
+      Script: {instanceID: 3980}
     - Class: 114
-      Script: {instanceID: 4038}
+      Script: {instanceID: 4036}
     - Class: 114
-      Script: {instanceID: 4230}
+      Script: {instanceID: 4228}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -831,4 +831,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainScene.unity
   - Assets/Scenes/StageScene.unity
-  playerPath: "C:/Users/NT550/Desktop/\uC18C\uC124/TouchOrAFK5.apk"
+  playerPath: "C:/Users/NT550/Desktop/\uC18C\uC124/TouchOrAFK6.aab"
