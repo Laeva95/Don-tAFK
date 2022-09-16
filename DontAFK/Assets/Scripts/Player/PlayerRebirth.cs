@@ -16,8 +16,8 @@ public class PlayerRebirth : MonoBehaviour
     {
         if (PlayerResource.Instance.PlayerClearStage >= 25)
         {
-            PlayerResource.Instance.PlayerRebirthPoint += (10 + (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f) 
-                * PlayerStatus.Instance.PlayerRebirthLevel));
+            PlayerResource.Instance.PlayerRebirthPoint += Mathf.CeilToInt((10 + Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f))
+                * PlayerStatus.Instance.PlayerRebirthLevel);
 
             PlayerResource.Instance.PlayerClearStage = 0;
             PlayerResource.Instance.PlayerGold = 0;
@@ -41,8 +41,8 @@ public class PlayerRebirth : MonoBehaviour
     }
     public void ADRebirthBtn()
     {
-        PlayerResource.Instance.PlayerRebirthPoint += 20 + (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f)
-            * PlayerStatus.Instance.PlayerRebirthLevel) * 2;
+        PlayerResource.Instance.PlayerRebirthPoint += Mathf.CeilToInt((10 + Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f))
+                * PlayerStatus.Instance.PlayerRebirthLevel) * 2;
 
         PlayerResource.Instance.PlayerClearStage = 0;
         PlayerResource.Instance.PlayerGold = 0;
@@ -65,7 +65,7 @@ public class PlayerRebirth : MonoBehaviour
 
     public void UpdateText()
     {
-        m_RebirthPointText.text = "Expected Gain\n" + (10 + (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f)
-                * PlayerStatus.Instance.PlayerRebirthLevel)) + " RP";
+        m_RebirthPointText.text = "Expected Gain\n" + Mathf.CeilToInt((10 + Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f))
+                * PlayerStatus.Instance.PlayerRebirthLevel) + " RP";
     }
 }

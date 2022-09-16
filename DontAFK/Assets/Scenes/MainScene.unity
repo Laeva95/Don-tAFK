@@ -3261,6 +3261,7 @@ MonoBehaviour:
   m_RebirthBtn: {fileID: 371986842}
   m_AutoBtn: {fileID: 2044339685}
   m_AllBtn: {fileID: 1132026986}
+  m_Rebirth: {fileID: 1391431185}
 --- !u!1 &584994585
 GameObject:
   m_ObjectHideFlags: 0

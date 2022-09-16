@@ -66,7 +66,6 @@ public class PlayerResource : MonoBehaviour
         if (GoldADCool > 0)
         {
             GoldADCool -= Time.deltaTime;
-            Debug.Log(GoldADCool);
         }
     }
 }

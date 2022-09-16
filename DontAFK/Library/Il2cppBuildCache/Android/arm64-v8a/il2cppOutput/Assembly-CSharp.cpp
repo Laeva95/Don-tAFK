@@ -5704,6 +5704,8 @@ public:
 	Button_tA893FC15AB26E1439AC25BDCA7079530587BB65D * ___m_AutoBtn_33;
 	// UnityEngine.UI.Button PlayerUpgrade::m_AllBtn
 	Button_tA893FC15AB26E1439AC25BDCA7079530587BB65D * ___m_AllBtn_34;
+	// PlayerRebirth PlayerUpgrade::m_Rebirth
+	PlayerRebirth_t8F0B2B690A5B8E0F68D00C519E065BBDA3C03160 * ___m_Rebirth_35;
 
 public:
 	inline static int32_t get_offset_of_m_TopUI_4() { return static_cast<int32_t>(offsetof(PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6, ___m_TopUI_4)); }
@@ -5983,6 +5985,15 @@ public:
 	{
 		___m_AllBtn_34 = value;
 		Il2CppCodeGenWriteBarrier((void**)(&___m_AllBtn_34), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_m_Rebirth_35() { return static_cast<int32_t>(offsetof(PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6, ___m_Rebirth_35)); }
+	inline PlayerRebirth_t8F0B2B690A5B8E0F68D00C519E065BBDA3C03160 * get_m_Rebirth_35() const { return ___m_Rebirth_35; }
+	inline PlayerRebirth_t8F0B2B690A5B8E0F68D00C519E065BBDA3C03160 ** get_address_of_m_Rebirth_35() { return &___m_Rebirth_35; }
+	inline void set_m_Rebirth_35(PlayerRebirth_t8F0B2B690A5B8E0F68D00C519E065BBDA3C03160 * value)
+	{
+		___m_Rebirth_35 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___m_Rebirth_35), (void*)value);
 	}
 };
 
@@ -7826,6 +7837,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerRebirth_UpdateText_m6AC67598B91E33
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Application_set_targetFrameRate_m0F44C8D07060E17D9D44D176888D14DBABE0CBFC (int32_t ___value0, const RuntimeMethod* method);
 // System.Int32 PlayerResource::get_PlayerRebirthPoint()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t PlayerResource_get_PlayerRebirthPoint_mBFAE267AB0FB038FAE5883CE596B4265961A4E40 (PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * __this, const RuntimeMethod* method);
+// System.Int32 UnityEngine.Mathf::CeilToInt(System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Mathf_CeilToInt_m3A3E7C0F6A3CF731411BB90F264F989D8311CC6F (float ___f0, const RuntimeMethod* method);
 // System.Void PlayerResource::set_PlayerRebirthPoint(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerResource_set_PlayerRebirthPoint_m58A0781320C3AD59755951DBF92438E061159614 (PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * __this, int32_t ___value0, const RuntimeMethod* method);
 // System.Void PlayerResource::set_PlayerClearStage(System.Int32)
@@ -9595,18 +9608,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Monster00_OnEnable_mF09DE1C325FF09EB0314
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		// m_MonsterMaxHP = 5 + (int)((MonsterSpawnManager.Stage * 1f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		// m_MonsterMaxHP = 5 + (int)((MonsterSpawnManager.Stage * 0.75f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_0;
 		L_0 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_1;
 		L_1 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)5, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(1.0f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.0199999996f)))))))))));
-		// m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.1f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)5, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(0.75f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.00999999978f)))))))))));
+		// m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.1f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_2;
 		L_2 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_3;
 		L_3 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.100000001f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.0199999996f)))))))))));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.100000001f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.00999999978f)))))))))));
 		// m_MoveSpeed = 0.5f;
 		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MoveSpeed_11((0.5f));
 		// m_AttackDelay00 = new WaitForSeconds(0.8f);
@@ -9655,32 +9668,32 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Monster01_OnEnable_m50232C0B718382E7AD72
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		// m_MonsterMaxHP = 10 + (int)((MonsterSpawnManager.Stage * 1.5f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		// m_MonsterMaxHP = 10 + (int)((MonsterSpawnManager.Stage * 1f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_0;
 		L_0 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_1;
 		L_1 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)((int32_t)10), (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(1.5f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.0199999996f)))))))))));
-		// m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.2f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)((int32_t)10), (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(1.0f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.00999999978f)))))))))));
+		// m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.15f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_2;
 		L_2 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_3;
 		L_3 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.200000003f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.0199999996f)))))))))));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.150000006f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.00999999978f)))))))))));
 		// m_MoveSpeed = 0.3f;
 		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MoveSpeed_11((0.300000012f));
 		// m_AttackDelay00 = new WaitForSeconds(0.8f);
 		WaitForSeconds_t8F9189BE6E467C98C99177038881F8982E0E4013 * L_4 = (WaitForSeconds_t8F9189BE6E467C98C99177038881F8982E0E4013 *)il2cpp_codegen_object_new(WaitForSeconds_t8F9189BE6E467C98C99177038881F8982E0E4013_il2cpp_TypeInfo_var);
 		WaitForSeconds__ctor_mD298C4CB9532BBBDE172FC40F3397E30504038D4(L_4, (0.800000012f), /*hidden argument*/NULL);
 		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_AttackDelay00_12(L_4);
-		// m_AttackDelay01 = new WaitForSeconds(0.2f);
+		// m_AttackDelay01 = new WaitForSeconds(1.2f);
 		WaitForSeconds_t8F9189BE6E467C98C99177038881F8982E0E4013 * L_5 = (WaitForSeconds_t8F9189BE6E467C98C99177038881F8982E0E4013 *)il2cpp_codegen_object_new(WaitForSeconds_t8F9189BE6E467C98C99177038881F8982E0E4013_il2cpp_TypeInfo_var);
-		WaitForSeconds__ctor_mD298C4CB9532BBBDE172FC40F3397E30504038D4(L_5, (0.200000003f), /*hidden argument*/NULL);
+		WaitForSeconds__ctor_mD298C4CB9532BBBDE172FC40F3397E30504038D4(L_5, (1.20000005f), /*hidden argument*/NULL);
 		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_AttackDelay01_13(L_5);
-		// m_MonsterGold = (2 + MonsterSpawnManager.Stage * 0.6f);
+		// m_MonsterGold = (2 + MonsterSpawnManager.Stage * 1f);
 		int32_t L_6;
 		L_6 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterGold_15(((float)il2cpp_codegen_add((float)(2.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_6)), (float)(0.600000024f))))));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterGold_15(((float)il2cpp_codegen_add((float)(2.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_6)), (float)(1.0f))))));
 		// m_MonsterKey = ObjectPoolingManager.m_Monster01Key;
 		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterKey_16(1);
 		// base.OnEnable();
@@ -9715,18 +9728,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Monster02_OnEnable_mF0B67ABCAF3BF86F761D
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		// m_MonsterMaxHP = 5 + (int)((MonsterSpawnManager.Stage * 0.6f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		// m_MonsterMaxHP = 5 + (int)((MonsterSpawnManager.Stage * 0.4f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_0;
 		L_0 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_1;
 		L_1 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)5, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(0.600000024f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.0199999996f)))))))))));
-		// m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.1f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)5, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(0.400000006f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.00999999978f)))))))))));
+		// m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.08f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_2;
 		L_2 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_3;
 		L_3 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.100000001f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.0199999996f)))))))))));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.0799999982f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.00999999978f)))))))))));
 		// m_MoveSpeed = 0.75f;
 		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MoveSpeed_11((0.75f));
 		// m_AttackDelay00 = new WaitForSeconds(0.8f);
@@ -9775,18 +9788,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Monster03_OnEnable_mE66E3CEEA3BA2944C536
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		// m_MonsterMaxHP = 3 + (int)((MonsterSpawnManager.Stage * 0.8f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		// m_MonsterMaxHP = 3 + (int)((MonsterSpawnManager.Stage * 0.5f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_0;
 		L_0 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_1;
 		L_1 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)3, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(0.800000012f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.0199999996f)))))))))));
-		// m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.15f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterMaxHP_8(((int32_t)il2cpp_codegen_add((int32_t)3, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_0)), (float)(0.5f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_1)), (float)(0.00999999978f)))))))))));
+		// m_MonsterDamage = 2 + (int)((MonsterSpawnManager.Stage * 0.1f) * (1 + MonsterSpawnManager.Stage * 0.01f));
 		int32_t L_2;
 		L_2 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
 		int32_t L_3;
 		L_3 = MonsterSpawnManager_get_Stage_m42CA42DD0C58C63C67389272B0BBB22E5129B2AF_inline(/*hidden argument*/NULL);
-		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.150000006f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.0199999996f)))))))))));
+		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MonsterDamage_10(((int32_t)il2cpp_codegen_add((int32_t)2, (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_multiply((float)((float)((float)L_2)), (float)(0.100000001f))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_3)), (float)(0.00999999978f)))))))))));
 		// m_MoveSpeed = 0.5f;
 		((Monster_tCD5E1EFC90E89F0C24A80E111385D7BD01C2C278 *)__this)->set_m_MoveSpeed_11((0.5f));
 		// m_AttackDelay00 = new WaitForSeconds(0.8f);
@@ -11485,12 +11498,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerRebirth_RebirthBtn_m748FA92D2F4863
 		L_1 = PlayerResource_get_PlayerClearStage_m2AFD5C685FAA19072EE996E14CF8BFCF0E243BCE(L_0, /*hidden argument*/NULL);
 		if ((((int32_t)L_1) < ((int32_t)((int32_t)25))))
 		{
-			goto IL_00f6;
+			goto IL_00fd;
 		}
 	}
 	{
-		// PlayerResource.Instance.PlayerRebirthPoint += (10 + (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f)
-		//     * PlayerStatus.Instance.PlayerRebirthLevel));
+		// PlayerResource.Instance.PlayerRebirthPoint += Mathf.CeilToInt((10 + Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f))
+		//     * PlayerStatus.Instance.PlayerRebirthLevel);
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_2;
 		L_2 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_3 = L_2;
@@ -11509,77 +11522,79 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerRebirth_RebirthBtn_m748FA92D2F4863
 		NullCheck(L_8);
 		float L_9;
 		L_9 = PlayerStatus_get_PlayerRebirthLevel_m95E2EF106ED16924AFD4F11E6AA9DA46E3485DA7_inline(L_8, /*hidden argument*/NULL);
+		int32_t L_10;
+		L_10 = Mathf_CeilToInt_m3A3E7C0F6A3CF731411BB90F264F989D8311CC6F(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_add((float)(10.0f), (float)L_7)), (float)L_9)), /*hidden argument*/NULL);
 		NullCheck(L_3);
-		PlayerResource_set_PlayerRebirthPoint_m58A0781320C3AD59755951DBF92438E061159614(L_3, ((int32_t)il2cpp_codegen_add((int32_t)L_4, (int32_t)((int32_t)il2cpp_codegen_add((int32_t)((int32_t)10), (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)L_7, (float)L_9))))))), /*hidden argument*/NULL);
+		PlayerResource_set_PlayerRebirthPoint_m58A0781320C3AD59755951DBF92438E061159614(L_3, ((int32_t)il2cpp_codegen_add((int32_t)L_4, (int32_t)L_10)), /*hidden argument*/NULL);
 		// PlayerResource.Instance.PlayerClearStage = 0;
-		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_10;
-		L_10 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
-		NullCheck(L_10);
-		PlayerResource_set_PlayerClearStage_m6CC9BFF0162157CFF9D8CC7D5681E4DB0D4D280A(L_10, 0, /*hidden argument*/NULL);
-		// PlayerResource.Instance.PlayerGold = 0;
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_11;
 		L_11 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
 		NullCheck(L_11);
-		PlayerResource_set_PlayerGold_mB4A27F56791A0E991506839AEE9BDB1D89156A97(L_11, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAllAttackLevel = 0;
-		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_12 = __this->get_m_Upgrade_4();
+		PlayerResource_set_PlayerClearStage_m6CC9BFF0162157CFF9D8CC7D5681E4DB0D4D280A(L_11, 0, /*hidden argument*/NULL);
+		// PlayerResource.Instance.PlayerGold = 0;
+		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_12;
+		L_12 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
 		NullCheck(L_12);
-		PlayerUpgrade_set_PlayerAllAttackLevel_m0F32E2ECDB7A20ACCFD37BEE45C89E7A7EA3D1DE(L_12, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerArmorLevel = 0;
+		PlayerResource_set_PlayerGold_mB4A27F56791A0E991506839AEE9BDB1D89156A97(L_12, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAllAttackLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_13 = __this->get_m_Upgrade_4();
 		NullCheck(L_13);
-		PlayerUpgrade_set_PlayerArmorLevel_mA9CFE0C22E7B0C6070E990F0574110127E2ECAC9(L_13, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAttackAreaLevel = 0;
+		PlayerUpgrade_set_PlayerAllAttackLevel_m0F32E2ECDB7A20ACCFD37BEE45C89E7A7EA3D1DE(L_13, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerArmorLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_14 = __this->get_m_Upgrade_4();
 		NullCheck(L_14);
-		PlayerUpgrade_set_PlayerAttackAreaLevel_mC12D363C5DAC2D94CD0FD6E73C1E71D60CE0C0F0(L_14, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAttackPowerLevel = 0;
+		PlayerUpgrade_set_PlayerArmorLevel_mA9CFE0C22E7B0C6070E990F0574110127E2ECAC9(L_14, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAttackAreaLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_15 = __this->get_m_Upgrade_4();
 		NullCheck(L_15);
-		PlayerUpgrade_set_PlayerAttackPowerLevel_m5DFDFE3E52164A827230BF5ADF2EC71FEB6EB851(L_15, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAttackSpeedLevel = 0;
+		PlayerUpgrade_set_PlayerAttackAreaLevel_mC12D363C5DAC2D94CD0FD6E73C1E71D60CE0C0F0(L_15, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAttackPowerLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_16 = __this->get_m_Upgrade_4();
 		NullCheck(L_16);
-		PlayerUpgrade_set_PlayerAttackSpeedLevel_m38C0A805CC1A6683EAF58996FD55857DD26C2C5C(L_16, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAutoAttackLevel = 0;
+		PlayerUpgrade_set_PlayerAttackPowerLevel_m5DFDFE3E52164A827230BF5ADF2EC71FEB6EB851(L_16, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAttackSpeedLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_17 = __this->get_m_Upgrade_4();
 		NullCheck(L_17);
-		PlayerUpgrade_set_PlayerAutoAttackLevel_m105A93B4F77C772E605D51B49A4CA5500959CCC4(L_17, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerGoldLevel = 0;
+		PlayerUpgrade_set_PlayerAttackSpeedLevel_m38C0A805CC1A6683EAF58996FD55857DD26C2C5C(L_17, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAutoAttackLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_18 = __this->get_m_Upgrade_4();
 		NullCheck(L_18);
-		PlayerUpgrade_set_PlayerGoldLevel_mE3719F05BE255EBEB7E71F134D572FEEAF46AAC8(L_18, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerHPRegenLevel = 0;
+		PlayerUpgrade_set_PlayerAutoAttackLevel_m105A93B4F77C772E605D51B49A4CA5500959CCC4(L_18, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerGoldLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_19 = __this->get_m_Upgrade_4();
 		NullCheck(L_19);
-		PlayerUpgrade_set_PlayerHPRegenLevel_m48958971A52AD5738C64D6E26B0CD1C1DC23D440(L_19, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerMaxHPLevel = 0;
+		PlayerUpgrade_set_PlayerGoldLevel_mE3719F05BE255EBEB7E71F134D572FEEAF46AAC8(L_19, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerHPRegenLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_20 = __this->get_m_Upgrade_4();
 		NullCheck(L_20);
-		PlayerUpgrade_set_PlayerMaxHPLevel_mDDBADB3F995A97E872608311C10AB4FABE5684E3(L_20, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerRebirthLevel = 0;
+		PlayerUpgrade_set_PlayerHPRegenLevel_m48958971A52AD5738C64D6E26B0CD1C1DC23D440(L_20, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerMaxHPLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_21 = __this->get_m_Upgrade_4();
 		NullCheck(L_21);
-		PlayerUpgrade_set_PlayerRebirthLevel_mAE22B1029B703902243DE78D4BF6CC2C33072BB2(L_21, 0, /*hidden argument*/NULL);
-		// m_Upgrade.UpdateText();
+		PlayerUpgrade_set_PlayerMaxHPLevel_mDDBADB3F995A97E872608311C10AB4FABE5684E3(L_21, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerRebirthLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_22 = __this->get_m_Upgrade_4();
 		NullCheck(L_22);
-		PlayerUpgrade_UpdateText_m6B9AC4366A228264B5C6D6E63ED5CD52A4C9CB8B(L_22, /*hidden argument*/NULL);
-		// m_Start.BestStageUpdate();
-		StageStart_t8B5E7BEC961F191E7D46439F7DE06994D5EB51F4 * L_23 = __this->get_m_Start_5();
+		PlayerUpgrade_set_PlayerRebirthLevel_mAE22B1029B703902243DE78D4BF6CC2C33072BB2(L_22, 0, /*hidden argument*/NULL);
+		// m_Upgrade.UpdateText();
+		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_23 = __this->get_m_Upgrade_4();
 		NullCheck(L_23);
-		StageStart_BestStageUpdate_m719C45AFEA5631BC58E16C5CE55FC4C9173E5F4F(L_23, /*hidden argument*/NULL);
+		PlayerUpgrade_UpdateText_m6B9AC4366A228264B5C6D6E63ED5CD52A4C9CB8B(L_23, /*hidden argument*/NULL);
+		// m_Start.BestStageUpdate();
+		StageStart_t8B5E7BEC961F191E7D46439F7DE06994D5EB51F4 * L_24 = __this->get_m_Start_5();
+		NullCheck(L_24);
+		StageStart_BestStageUpdate_m719C45AFEA5631BC58E16C5CE55FC4C9173E5F4F(L_24, /*hidden argument*/NULL);
 		// UpdateText();
 		PlayerRebirth_UpdateText_m6AC67598B91E33EB0BF5D68B0265A5989E832E82(__this, /*hidden argument*/NULL);
 	}
 
-IL_00f6:
+IL_00fd:
 	{
 		// SoundManager.Instance.SoundPlay(SOUND_NAME.UI);
-		SoundManager_t55BBC5661BB88EBEFF99C27CBD475CF774902D62 * L_24;
-		L_24 = SoundManager_get_Instance_mB2D05669AF91B4D14A63BC76820A362B6F36AB90(/*hidden argument*/NULL);
-		NullCheck(L_24);
-		SoundManager_SoundPlay_m12B417D937F8B20CA2C494702D433CD6900153E9(L_24, 4, /*hidden argument*/NULL);
+		SoundManager_t55BBC5661BB88EBEFF99C27CBD475CF774902D62 * L_25;
+		L_25 = SoundManager_get_Instance_mB2D05669AF91B4D14A63BC76820A362B6F36AB90(/*hidden argument*/NULL);
+		NullCheck(L_25);
+		SoundManager_SoundPlay_m12B417D937F8B20CA2C494702D433CD6900153E9(L_25, 4, /*hidden argument*/NULL);
 		// }
 		return;
 	}
@@ -11588,8 +11603,8 @@ IL_00f6:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerRebirth_ADRebirthBtn_m0C59EF81B14D3083080B1803F13F4B6B0B392B7B (PlayerRebirth_t8F0B2B690A5B8E0F68D00C519E065BBDA3C03160 * __this, const RuntimeMethod* method)
 {
 	{
-		// PlayerResource.Instance.PlayerRebirthPoint += 20 + (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f)
-		//     * PlayerStatus.Instance.PlayerRebirthLevel) * 2;
+		// PlayerResource.Instance.PlayerRebirthPoint += Mathf.CeilToInt((10 + Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f))
+		//         * PlayerStatus.Instance.PlayerRebirthLevel) * 2;
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_0;
 		L_0 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_1 = L_0;
@@ -11608,66 +11623,68 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerRebirth_ADRebirthBtn_m0C59EF81B14D
 		NullCheck(L_6);
 		float L_7;
 		L_7 = PlayerStatus_get_PlayerRebirthLevel_m95E2EF106ED16924AFD4F11E6AA9DA46E3485DA7_inline(L_6, /*hidden argument*/NULL);
+		int32_t L_8;
+		L_8 = Mathf_CeilToInt_m3A3E7C0F6A3CF731411BB90F264F989D8311CC6F(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_add((float)(10.0f), (float)L_5)), (float)L_7)), /*hidden argument*/NULL);
 		NullCheck(L_1);
-		PlayerResource_set_PlayerRebirthPoint_m58A0781320C3AD59755951DBF92438E061159614(L_1, ((int32_t)il2cpp_codegen_add((int32_t)L_2, (int32_t)((int32_t)il2cpp_codegen_add((int32_t)((int32_t)20), (int32_t)((int32_t)il2cpp_codegen_multiply((int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)L_5, (float)L_7))), (int32_t)2)))))), /*hidden argument*/NULL);
+		PlayerResource_set_PlayerRebirthPoint_m58A0781320C3AD59755951DBF92438E061159614(L_1, ((int32_t)il2cpp_codegen_add((int32_t)L_2, (int32_t)((int32_t)il2cpp_codegen_multiply((int32_t)L_8, (int32_t)2)))), /*hidden argument*/NULL);
 		// PlayerResource.Instance.PlayerClearStage = 0;
-		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_8;
-		L_8 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
-		NullCheck(L_8);
-		PlayerResource_set_PlayerClearStage_m6CC9BFF0162157CFF9D8CC7D5681E4DB0D4D280A(L_8, 0, /*hidden argument*/NULL);
-		// PlayerResource.Instance.PlayerGold = 0;
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_9;
 		L_9 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
 		NullCheck(L_9);
-		PlayerResource_set_PlayerGold_mB4A27F56791A0E991506839AEE9BDB1D89156A97(L_9, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAllAttackLevel = 0;
-		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_10 = __this->get_m_Upgrade_4();
+		PlayerResource_set_PlayerClearStage_m6CC9BFF0162157CFF9D8CC7D5681E4DB0D4D280A(L_9, 0, /*hidden argument*/NULL);
+		// PlayerResource.Instance.PlayerGold = 0;
+		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_10;
+		L_10 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
 		NullCheck(L_10);
-		PlayerUpgrade_set_PlayerAllAttackLevel_m0F32E2ECDB7A20ACCFD37BEE45C89E7A7EA3D1DE(L_10, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerArmorLevel = 0;
+		PlayerResource_set_PlayerGold_mB4A27F56791A0E991506839AEE9BDB1D89156A97(L_10, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAllAttackLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_11 = __this->get_m_Upgrade_4();
 		NullCheck(L_11);
-		PlayerUpgrade_set_PlayerArmorLevel_mA9CFE0C22E7B0C6070E990F0574110127E2ECAC9(L_11, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAttackAreaLevel = 0;
+		PlayerUpgrade_set_PlayerAllAttackLevel_m0F32E2ECDB7A20ACCFD37BEE45C89E7A7EA3D1DE(L_11, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerArmorLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_12 = __this->get_m_Upgrade_4();
 		NullCheck(L_12);
-		PlayerUpgrade_set_PlayerAttackAreaLevel_mC12D363C5DAC2D94CD0FD6E73C1E71D60CE0C0F0(L_12, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAttackPowerLevel = 0;
+		PlayerUpgrade_set_PlayerArmorLevel_mA9CFE0C22E7B0C6070E990F0574110127E2ECAC9(L_12, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAttackAreaLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_13 = __this->get_m_Upgrade_4();
 		NullCheck(L_13);
-		PlayerUpgrade_set_PlayerAttackPowerLevel_m5DFDFE3E52164A827230BF5ADF2EC71FEB6EB851(L_13, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAttackSpeedLevel = 0;
+		PlayerUpgrade_set_PlayerAttackAreaLevel_mC12D363C5DAC2D94CD0FD6E73C1E71D60CE0C0F0(L_13, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAttackPowerLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_14 = __this->get_m_Upgrade_4();
 		NullCheck(L_14);
-		PlayerUpgrade_set_PlayerAttackSpeedLevel_m38C0A805CC1A6683EAF58996FD55857DD26C2C5C(L_14, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerAutoAttackLevel = 0;
+		PlayerUpgrade_set_PlayerAttackPowerLevel_m5DFDFE3E52164A827230BF5ADF2EC71FEB6EB851(L_14, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAttackSpeedLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_15 = __this->get_m_Upgrade_4();
 		NullCheck(L_15);
-		PlayerUpgrade_set_PlayerAutoAttackLevel_m105A93B4F77C772E605D51B49A4CA5500959CCC4(L_15, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerGoldLevel = 0;
+		PlayerUpgrade_set_PlayerAttackSpeedLevel_m38C0A805CC1A6683EAF58996FD55857DD26C2C5C(L_15, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerAutoAttackLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_16 = __this->get_m_Upgrade_4();
 		NullCheck(L_16);
-		PlayerUpgrade_set_PlayerGoldLevel_mE3719F05BE255EBEB7E71F134D572FEEAF46AAC8(L_16, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerHPRegenLevel = 0;
+		PlayerUpgrade_set_PlayerAutoAttackLevel_m105A93B4F77C772E605D51B49A4CA5500959CCC4(L_16, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerGoldLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_17 = __this->get_m_Upgrade_4();
 		NullCheck(L_17);
-		PlayerUpgrade_set_PlayerHPRegenLevel_m48958971A52AD5738C64D6E26B0CD1C1DC23D440(L_17, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerMaxHPLevel = 0;
+		PlayerUpgrade_set_PlayerGoldLevel_mE3719F05BE255EBEB7E71F134D572FEEAF46AAC8(L_17, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerHPRegenLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_18 = __this->get_m_Upgrade_4();
 		NullCheck(L_18);
-		PlayerUpgrade_set_PlayerMaxHPLevel_mDDBADB3F995A97E872608311C10AB4FABE5684E3(L_18, 0, /*hidden argument*/NULL);
-		// m_Upgrade.PlayerRebirthLevel = 0;
+		PlayerUpgrade_set_PlayerHPRegenLevel_m48958971A52AD5738C64D6E26B0CD1C1DC23D440(L_18, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerMaxHPLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_19 = __this->get_m_Upgrade_4();
 		NullCheck(L_19);
-		PlayerUpgrade_set_PlayerRebirthLevel_mAE22B1029B703902243DE78D4BF6CC2C33072BB2(L_19, 0, /*hidden argument*/NULL);
-		// m_Upgrade.UpdateText();
+		PlayerUpgrade_set_PlayerMaxHPLevel_mDDBADB3F995A97E872608311C10AB4FABE5684E3(L_19, 0, /*hidden argument*/NULL);
+		// m_Upgrade.PlayerRebirthLevel = 0;
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_20 = __this->get_m_Upgrade_4();
 		NullCheck(L_20);
-		PlayerUpgrade_UpdateText_m6B9AC4366A228264B5C6D6E63ED5CD52A4C9CB8B(L_20, /*hidden argument*/NULL);
-		// m_Start.BestStageUpdate();
-		StageStart_t8B5E7BEC961F191E7D46439F7DE06994D5EB51F4 * L_21 = __this->get_m_Start_5();
+		PlayerUpgrade_set_PlayerRebirthLevel_mAE22B1029B703902243DE78D4BF6CC2C33072BB2(L_20, 0, /*hidden argument*/NULL);
+		// m_Upgrade.UpdateText();
+		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_21 = __this->get_m_Upgrade_4();
 		NullCheck(L_21);
-		StageStart_BestStageUpdate_m719C45AFEA5631BC58E16C5CE55FC4C9173E5F4F(L_21, /*hidden argument*/NULL);
+		PlayerUpgrade_UpdateText_m6B9AC4366A228264B5C6D6E63ED5CD52A4C9CB8B(L_21, /*hidden argument*/NULL);
+		// m_Start.BestStageUpdate();
+		StageStart_t8B5E7BEC961F191E7D46439F7DE06994D5EB51F4 * L_22 = __this->get_m_Start_5();
+		NullCheck(L_22);
+		StageStart_BestStageUpdate_m719C45AFEA5631BC58E16C5CE55FC4C9173E5F4F(L_22, /*hidden argument*/NULL);
 		// UpdateText();
 		PlayerRebirth_UpdateText_m6AC67598B91E33EB0BF5D68B0265A5989E832E82(__this, /*hidden argument*/NULL);
 		// }
@@ -11686,8 +11703,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerRebirth_UpdateText_m6AC67598B91E33
 	}
 	int32_t V_0 = 0;
 	{
-		// m_RebirthPointText.text = "Expected Gain\n" + (10 + (int)(Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f)
-		//         * PlayerStatus.Instance.PlayerRebirthLevel)) + " RP";
+		// m_RebirthPointText.text = "Expected Gain\n" + Mathf.CeilToInt((10 + Mathf.Pow(PlayerResource.Instance.PlayerClearStage * 0.1f, 1.4f))
+		//         * PlayerStatus.Instance.PlayerRebirthLevel) + " RP";
 		Text_t6A2339DA6C05AE2646FC1A6C8FCC127391BE7FA1 * L_0 = __this->get_m_RebirthPointText_6();
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_1;
 		L_1 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
@@ -11701,13 +11718,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerRebirth_UpdateText_m6AC67598B91E33
 		NullCheck(L_4);
 		float L_5;
 		L_5 = PlayerStatus_get_PlayerRebirthLevel_m95E2EF106ED16924AFD4F11E6AA9DA46E3485DA7_inline(L_4, /*hidden argument*/NULL);
-		V_0 = ((int32_t)il2cpp_codegen_add((int32_t)((int32_t)10), (int32_t)il2cpp_codegen_cast_double_to_int<int32_t>(((float)il2cpp_codegen_multiply((float)L_3, (float)L_5)))));
-		String_t* L_6;
-		L_6 = Int32_ToString_m340C0A14D16799421EFDF8A81C8A16FA76D48411((int32_t*)(&V_0), /*hidden argument*/NULL);
+		int32_t L_6;
+		L_6 = Mathf_CeilToInt_m3A3E7C0F6A3CF731411BB90F264F989D8311CC6F(((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_add((float)(10.0f), (float)L_3)), (float)L_5)), /*hidden argument*/NULL);
+		V_0 = L_6;
 		String_t* L_7;
-		L_7 = String_Concat_m89EAB4C6A96B0E5C3F87300D6BE78D386B9EFC44(_stringLiteralB4A0E95349E6B40792BEADE45DCCB81FFA472604, L_6, _stringLiteral0A5543C97F27BD878BC278C4E440EB976B9A4B76, /*hidden argument*/NULL);
+		L_7 = Int32_ToString_m340C0A14D16799421EFDF8A81C8A16FA76D48411((int32_t*)(&V_0), /*hidden argument*/NULL);
+		String_t* L_8;
+		L_8 = String_Concat_m89EAB4C6A96B0E5C3F87300D6BE78D386B9EFC44(_stringLiteralB4A0E95349E6B40792BEADE45DCCB81FFA472604, L_7, _stringLiteral0A5543C97F27BD878BC278C4E440EB976B9A4B76, /*hidden argument*/NULL);
 		NullCheck(L_0);
-		VirtActionInvoker1< String_t* >::Invoke(75 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_0, L_7);
+		VirtActionInvoker1< String_t* >::Invoke(75 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_0, L_8);
 		// }
 		return;
 	}
@@ -12415,20 +12434,13 @@ IL_001a:
 // System.Void PlayerResource::Update()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerResource_Update_mBB61ACDA19E3476C34755CBD59A113966911E9B0 (PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * __this, const RuntimeMethod* method)
 {
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Single_tE07797BA3C98D4CA9B5A19413C19A76688AB899E_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
 	{
 		// if (GoldADCool > 0)
 		float L_0;
 		L_0 = PlayerResource_get_GoldADCool_mA76E816F863F83EEC3EDA157D1028166940287D8(__this, /*hidden argument*/NULL);
 		if ((!(((float)L_0) > ((float)(0.0f)))))
 		{
-			goto IL_002f;
+			goto IL_001f;
 		}
 	}
 	{
@@ -12438,16 +12450,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerResource_Update_mBB61ACDA19E3476C3
 		float L_2;
 		L_2 = Time_get_deltaTime_mCC15F147DA67F38C74CE408FB5D7FF4A87DA2290(/*hidden argument*/NULL);
 		PlayerResource_set_GoldADCool_m58D18644F70CE2F02F0CAAD7652B12F6CCF71365(__this, ((float)il2cpp_codegen_subtract((float)L_1, (float)L_2)), /*hidden argument*/NULL);
-		// Debug.Log(GoldADCool);
-		float L_3;
-		L_3 = PlayerResource_get_GoldADCool_mA76E816F863F83EEC3EDA157D1028166940287D8(__this, /*hidden argument*/NULL);
-		float L_4 = L_3;
-		RuntimeObject * L_5 = Box(Single_tE07797BA3C98D4CA9B5A19413C19A76688AB899E_il2cpp_TypeInfo_var, &L_4);
-		IL2CPP_RUNTIME_CLASS_INIT(Debug_tEB68BCBEB8EFD60F8043C67146DC05E7F50F374B_il2cpp_TypeInfo_var);
-		Debug_Log_mC26E5AD0D8D156C7FFD173AA15827F69225E9DB8(L_5, /*hidden argument*/NULL);
 	}
 
-IL_002f:
+IL_001f:
 	{
 		// }
 		return;
@@ -12818,7 +12823,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerStatus_PlayerStatusUpdate_mAE4D3A6
 		int32_t L_17;
 		L_17 = PlayerUpgrade_get_PlayerArmorLevel_mC8376943CD633EEE4539D1D42E4C9126202E2A07(L_16, /*hidden argument*/NULL);
 		PlayerStatus_set_PlayerArmor_mE33C6A0CCC6768B08B3EB5A7A7848C941B215660_inline(__this, L_17, /*hidden argument*/NULL);
-		// PlayerGoldLevel = ((1 + (up.PlayerGoldLevel * 0.01f)) * (1 + (0.1f * relic.PlayerGoldLevel)));
+		// PlayerGoldLevel = ((1 + (up.PlayerGoldLevel * 0.02f)) * (1 + (0.1f * relic.PlayerGoldLevel)));
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_18 = V_0;
 		NullCheck(L_18);
 		int32_t L_19;
@@ -12827,13 +12832,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerStatus_PlayerStatusUpdate_mAE4D3A6
 		NullCheck(L_20);
 		int32_t L_21;
 		L_21 = PlayerRelic_get_PlayerGoldLevel_mC2A596EAF5492EDD84788A56E5E138BE53143B92(L_20, /*hidden argument*/NULL);
-		PlayerStatus_set_PlayerGoldLevel_m27986A227C4E792A66764909C89FCA95CD115EFF_inline(__this, ((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_19)), (float)(0.00999999978f))))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)(0.100000001f), (float)((float)((float)L_21)))))))), /*hidden argument*/NULL);
-		// PlayerRebirthLevel = 1 + (up.PlayerRebirthLevel * 0.01f);
+		PlayerStatus_set_PlayerGoldLevel_m27986A227C4E792A66764909C89FCA95CD115EFF_inline(__this, ((float)il2cpp_codegen_multiply((float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_19)), (float)(0.0199999996f))))), (float)((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)(0.100000001f), (float)((float)((float)L_21)))))))), /*hidden argument*/NULL);
+		// PlayerRebirthLevel = 1 + (up.PlayerRebirthLevel * 0.02f);
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_22 = V_0;
 		NullCheck(L_22);
 		int32_t L_23;
 		L_23 = PlayerUpgrade_get_PlayerRebirthLevel_mF682D34C7F9C646A53BCF43F105FC23C4CBEAD88(L_22, /*hidden argument*/NULL);
-		PlayerStatus_set_PlayerRebirthLevel_mE1EEA967103133BC23FB9823EE7F355ECA936C75_inline(__this, ((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_23)), (float)(0.00999999978f))))), /*hidden argument*/NULL);
+		PlayerStatus_set_PlayerRebirthLevel_mE1EEA967103133BC23FB9823EE7F355ECA936C75_inline(__this, ((float)il2cpp_codegen_add((float)(1.0f), (float)((float)il2cpp_codegen_multiply((float)((float)((float)L_23)), (float)(0.0199999996f))))), /*hidden argument*/NULL);
 		// PlayerAutoAttackLevel = 2 - (up.PlayerAutoAttackLevel * 0.05f);
 		PlayerUpgrade_tF7FB374782568D3180B3012441D9A8A1137DB7D6 * L_24 = V_0;
 		NullCheck(L_24);
@@ -13360,11 +13365,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerUpgrade_UpdateText_m6B9AC4366A2282
 		L_43 = String_Concat_m4B4AB72618348C5DFBFBA8DED84B9E2EBDB55E1B(L_42, _stringLiteral398FAFE7B6290F7F0054092DA46288E028440E76, /*hidden argument*/NULL);
 		NullCheck(L_40);
 		VirtActionInvoker1< String_t* >::Invoke(75 /* System.Void UnityEngine.UI.Text::set_text(System.String) */, L_40, L_43);
-		// m_SpeedBtnText.text = (500 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
+		// m_SpeedBtnText.text = (250 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
 		Text_t6A2339DA6C05AE2646FC1A6C8FCC127391BE7FA1 * L_44 = __this->get_m_SpeedBtnText_16();
 		int32_t L_45;
 		L_45 = PlayerUpgrade_get_PlayerAttackSpeedLevel_mF923EC3D9BB17E555CDBD3AF0B005276C9811003(__this, /*hidden argument*/NULL);
-		V_0 = ((int32_t)il2cpp_codegen_multiply((int32_t)((int32_t)500), (int32_t)((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)L_45))));
+		V_0 = ((int32_t)il2cpp_codegen_multiply((int32_t)((int32_t)250), (int32_t)((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)L_45))));
 		String_t* L_46;
 		L_46 = Int32_ToString_m340C0A14D16799421EFDF8A81C8A16FA76D48411((int32_t*)(&V_0), /*hidden argument*/NULL);
 		String_t* L_47;
@@ -13583,15 +13588,19 @@ IL_0421:
 
 IL_042d:
 	{
-		// m_TopUI.UpdateText();
-		TopUI_t8BDAFE5F8639096EB6F4A434D1CC7E2FAEE2CD64 * L_96 = __this->get_m_TopUI_4();
-		NullCheck(L_96);
-		TopUI_UpdateText_m8FFE180EB5E2F675E6D873BB2835EF1E877B362D(L_96, /*hidden argument*/NULL);
 		// PlayerStatus.Instance.PlayerStatusUpdate();
-		PlayerStatus_tA70DCF10B7F5D4B0CD8A266F103D0922B774518D * L_97;
-		L_97 = PlayerStatus_get_Instance_mF7770B09200C73E5C90ADBCA5195D624E13DBF35(/*hidden argument*/NULL);
+		PlayerStatus_tA70DCF10B7F5D4B0CD8A266F103D0922B774518D * L_96;
+		L_96 = PlayerStatus_get_Instance_mF7770B09200C73E5C90ADBCA5195D624E13DBF35(/*hidden argument*/NULL);
+		NullCheck(L_96);
+		PlayerStatus_PlayerStatusUpdate_mAE4D3A63CAB094DA1F71CE278EAFA6E66A625890(L_96, /*hidden argument*/NULL);
+		// m_TopUI.UpdateText();
+		TopUI_t8BDAFE5F8639096EB6F4A434D1CC7E2FAEE2CD64 * L_97 = __this->get_m_TopUI_4();
 		NullCheck(L_97);
-		PlayerStatus_PlayerStatusUpdate_mAE4D3A63CAB094DA1F71CE278EAFA6E66A625890(L_97, /*hidden argument*/NULL);
+		TopUI_UpdateText_m8FFE180EB5E2F675E6D873BB2835EF1E877B362D(L_97, /*hidden argument*/NULL);
+		// m_Rebirth.UpdateText();
+		PlayerRebirth_t8F0B2B690A5B8E0F68D00C519E065BBDA3C03160 * L_98 = __this->get_m_Rebirth_35();
+		NullCheck(L_98);
+		PlayerRebirth_UpdateText_m6AC67598B91E33EB0BF5D68B0265A5989E832E82(L_98, /*hidden argument*/NULL);
 		// }
 		return;
 	}
@@ -13652,7 +13661,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerUpgrade_AttackSpeedBtn_m3080CDA313
 {
 	int32_t V_0 = 0;
 	{
-		// if ((500 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
+		// if ((250 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
 		int32_t L_0;
 		L_0 = PlayerUpgrade_get_PlayerAttackSpeedLevel_mF923EC3D9BB17E555CDBD3AF0B005276C9811003(__this, /*hidden argument*/NULL);
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_1;
@@ -13660,13 +13669,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerUpgrade_AttackSpeedBtn_m3080CDA313
 		NullCheck(L_1);
 		int32_t L_2;
 		L_2 = PlayerResource_get_PlayerGold_mEF6638FA4B514373A0B094D758CB939E1200B707(L_1, /*hidden argument*/NULL);
-		if ((((int32_t)((int32_t)il2cpp_codegen_multiply((int32_t)((int32_t)500), (int32_t)((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)L_0))))) > ((int32_t)L_2)))
+		if ((((int32_t)((int32_t)il2cpp_codegen_multiply((int32_t)((int32_t)250), (int32_t)((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)L_0))))) > ((int32_t)L_2)))
 		{
 			goto IL_004f;
 		}
 	}
 	{
-		// PlayerResource.Instance.PlayerGold -= (500 * (1 + PlayerAttackSpeedLevel));
+		// PlayerResource.Instance.PlayerGold -= (250 * (1 + PlayerAttackSpeedLevel));
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_3;
 		L_3 = PlayerResource_get_Instance_mD44F17E8161C14821AEC847A3963C1D621F761C7(/*hidden argument*/NULL);
 		PlayerResource_t60942BC0D536C418E605A1F006E6B0243226BCF2 * L_4 = L_3;
@@ -13676,7 +13685,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerUpgrade_AttackSpeedBtn_m3080CDA313
 		int32_t L_6;
 		L_6 = PlayerUpgrade_get_PlayerAttackSpeedLevel_mF923EC3D9BB17E555CDBD3AF0B005276C9811003(__this, /*hidden argument*/NULL);
 		NullCheck(L_4);
-		PlayerResource_set_PlayerGold_mB4A27F56791A0E991506839AEE9BDB1D89156A97(L_4, ((int32_t)il2cpp_codegen_subtract((int32_t)L_5, (int32_t)((int32_t)il2cpp_codegen_multiply((int32_t)((int32_t)500), (int32_t)((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)L_6)))))), /*hidden argument*/NULL);
+		PlayerResource_set_PlayerGold_mB4A27F56791A0E991506839AEE9BDB1D89156A97(L_4, ((int32_t)il2cpp_codegen_subtract((int32_t)L_5, (int32_t)((int32_t)il2cpp_codegen_multiply((int32_t)((int32_t)250), (int32_t)((int32_t)il2cpp_codegen_add((int32_t)1, (int32_t)L_6)))))), /*hidden argument*/NULL);
 		// PlayerAttackSpeedLevel++;
 		int32_t L_7;
 		L_7 = PlayerUpgrade_get_PlayerAttackSpeedLevel_mF923EC3D9BB17E555CDBD3AF0B005276C9811003(__this, /*hidden argument*/NULL);

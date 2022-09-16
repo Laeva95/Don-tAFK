@@ -38,6 +38,8 @@ public class PlayerUpgrade : MonoBehaviour
     [SerializeField] Button m_RebirthBtn;
     [SerializeField] Button m_AutoBtn;
     [SerializeField] Button m_AllBtn;
+
+    [SerializeField] PlayerRebirth m_Rebirth;
     public int PlayerAttackPowerLevel 
     { 
         get 
@@ -129,7 +131,7 @@ public class PlayerUpgrade : MonoBehaviour
         m_AllText.text = "Fullscreen Attack\n" + (60 - (PlayerAllAttackLevel * 1)).ToString() + " sec";
 
         m_PowerBtnText.text = (50 * (1 + PlayerAttackPowerLevel)).ToString() + "\nGold";
-        m_SpeedBtnText.text = (500 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
+        m_SpeedBtnText.text = (250 * (1 + PlayerAttackSpeedLevel)).ToString() + "\nGold";
         m_AreaBtnText.text = (500 * (1 + PlayerAttackAreaLevel)).ToString() + "\nGold";
         m_MaxHPBtnText.text = (100 * (1 + PlayerMaxHPLevel)).ToString() + "\nGold";
         m_HPRegenBtnText.text = (250 * (1 + PlayerHPRegenLevel)).ToString() + "\nGold";
@@ -176,8 +178,9 @@ public class PlayerUpgrade : MonoBehaviour
             m_AllBtn.interactable = true;
         }
 
-        m_TopUI.UpdateText();
         PlayerStatus.Instance.PlayerStatusUpdate();
+        m_TopUI.UpdateText();
+        m_Rebirth.UpdateText();
     }
 
     public void AttackPowerBtn()
@@ -192,9 +195,9 @@ public class PlayerUpgrade : MonoBehaviour
     }
     public void AttackSpeedBtn()
     {
-        if ((500 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
+        if ((250 * (1 + PlayerAttackSpeedLevel)) <= PlayerResource.Instance.PlayerGold)
         {
-            PlayerResource.Instance.PlayerGold -= (500 * (1 + PlayerAttackSpeedLevel));
+            PlayerResource.Instance.PlayerGold -= (250 * (1 + PlayerAttackSpeedLevel));
             PlayerAttackSpeedLevel++;
 
             UpdateText();

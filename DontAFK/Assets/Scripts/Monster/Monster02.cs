@@ -6,8 +6,8 @@ public class Monster02 : MeleeMonster
 {
     protected override void OnEnable()
     {
-        m_MonsterMaxHP = 5 + (int)((MonsterSpawnManager.Stage * 0.6f) * (1 + MonsterSpawnManager.Stage * 0.02f));
-        m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.1f) * (1 + MonsterSpawnManager.Stage * 0.02f));
+        m_MonsterMaxHP = 5 + (int)((MonsterSpawnManager.Stage * 0.4f) * (1 + MonsterSpawnManager.Stage * 0.01f));
+        m_MonsterDamage = 1 + (int)((MonsterSpawnManager.Stage * 0.08f) * (1 + MonsterSpawnManager.Stage * 0.01f));
         m_MoveSpeed = 0.75f;
         m_AttackDelay00 = new WaitForSeconds(0.8f);
         m_AttackDelay01 = new WaitForSeconds(0.2f);
